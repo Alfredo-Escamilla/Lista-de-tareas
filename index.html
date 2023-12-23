@@ -19,8 +19,11 @@
   <script defer src="js/index.js"> </script>
   <script defer src="js/tooltip.js"></script>
   <!-- CSS -->
-  <link rel="icon" type="" href="img/favicon.ico">
+  <link rel="icon" type="" href="/img/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -84,22 +87,3 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-    <!-- const elemento = `
-                        <li id="elemento">
-                        <button class="terminar" data-id="${id}">O</button> 
-                        <p>${tarea.completado ? (
-                            `<span class='completa'>${tarea.valor}</span>`
-                        ) : (
-                            `<span class='incompleta'>${tarea.valor}</span>`
-                        )}</p>
-                        <button class="eliminar" data-id="${id}">-</button> 
-                        </li>
-                        `;
-        listado.insertAdjacentHTML("beforeend", elemento); -->

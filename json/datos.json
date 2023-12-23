@@ -1,19 +1,33 @@
 {
-"tareas": [
+  "tareas": [
     {
-        "id": 0,
-        "tarea": "Comprar el pan",
-        "descripcion": "Pan de centeno",
-        "Completada": false,
-        "eliminada": false
+      "id": 0,
+      "tarea": "Comprar el pan",
+      "notas": "Pan de centeno",
+      "Completada": false,
+      "eliminada": false
     },
     {
-        "id": 1,
-        "tarea": "Sacar al perro",
-        "descripcion": "Recoger residuos",
-        "Completada": false,
-        "eliminada": false
+      "id": 1,
+      "tarea": "Sacar al perro",
+      "notas": "Recoger residuos",
+      "Completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
     }
-
-]
+  ]
 }

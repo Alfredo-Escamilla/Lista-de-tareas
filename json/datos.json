@@ -1,0 +1,19 @@
+{
+"tareas": [
+    {
+        "id": 0,
+        "tarea": "Comprar el pan",
+        "descripcion": "Pan de centeno",
+        "Completada": false,
+        "eliminada": false
+    },
+    {
+        "id": 1,
+        "tarea": "Sacar al perro",
+        "descripcion": "Recoger residuos",
+        "Completada": false,
+        "eliminada": false
+    }
+
+]
+}

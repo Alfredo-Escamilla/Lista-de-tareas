@@ -1,5 +1,4 @@
 let array = [];
-let datos = [];
 let botonGuardarTarea = document.getElementById("botonGuardarTarea");
 let valorCajaTarea;
 let valorCajaNotas;
@@ -9,19 +8,49 @@ let eliminada = false;
 let objetoArray;
 let nuevaTarea;
 let conversionRegistro;
+let arrayTemporal = [];
+let nuevoRegistro;
+let textoTarea
+const rutaJson = "json/datos.json";
+
+
+function cargaDeDatos() {
+  leerValoresJson();
+  console.log(arrayTemporal.length);
+  console.log(arrayTemporal);
+  for (let i = 0; i < arrayTemporal.length; i++) {
+    textoTarea = arrayTemporal[i].tarea;
+    valorCajaTarea = textoTarea.slice(0, 35).padEnd(35, ' ');
+    nuevaTarea = document.querySelector("#objetoTarea");
+    elementos = `
+    <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+      <tr>
+        <td style="width: 60%;"><pre>${valorCajaTarea}<pre></td>
+        <td style="width: 18%;">
+          <button class="botones" id="finish"><i class="fa-solid fa-flag-checkered"></i></button> 
+          <button class="botones" id="edit"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="botones" id="delete"><i class="fa fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </table>`;
+    nuevaTarea.insertAdjacentHTML("beforeend", elementos);
+    
+}
+  
+}
+
+
 
 function capturarValoresIntroducidos() {
   valorCajaTarea = document.getElementById("cajaTextoTarea").value;
   valorCajaNotas = document.getElementById("cajaTextoNotas").value;
 }
 
-async function guardarValoresEnJson() {
-  const rutaJson = "json/datos.json";
-  
+async function leerValoresJson() {
   try {
     const response = await fetch(rutaJson);
     const responseData = await response.json();
-    datos.push(responseData);
+    arrayTemporal.push(responseData);
    } catch (error) {
     let errorJson = `
       <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
@@ -30,50 +59,20 @@ async function guardarValoresEnJson() {
       </div> `;
     nuevaTarea.insertAdjacentHTML("beforeend", errorJson);
   }
-
-  const nuevoRegistro = {
-    completada: completada,
-    eliminada: eliminada,
-    id: indiceArray,
-    notas: valorCajaNotas,
-    tarea: valorCajaTarea,
-};
-
-  datos.push(nuevoRegistro);
-  console.log(nuevoRegistro);
-
-  const rutaJsonDeVuelta = "http://localhost:3000/tareas";
-
-  // try {
-  //   const responseVuelta = await fetch(rutaJsonDeVuelta, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     conversionRegistro : JSON.stringify(nuevoRegistro),
-  //     body: conversionRegistro,
-  //   });
-  //   const resultadoVuelta = await responseVuelta.json();
-  // } catch (error) {
-  //   console.log("Error en el nuevo registro");
-  // }
 }
 
-
-function guardarValoresEnArray() {
-  indiceArray = array.length;
-  objetoArray = {
+function guardarTareaEnArrayTemporal() {
+  nuevoRegistro = {
     id: indiceArray,
     tarea: valorCajaTarea,
     notas: valorCajaNotas,
     completada: completada,
     eliminada: eliminada
   };
-  array.push(objetoArray);
-  indiceArray++;
-  console.log(array);
-
+  arrayTemporal.push(nuevoRegistro);
 }
+
+
 
 function crearElementoCard() {
   valorCajaTarea = valorCajaTarea.slice(0, 35).padEnd(35, ' ');
@@ -93,8 +92,9 @@ function crearElementoCard() {
 }
 
 botonGuardarTarea.addEventListener("click", function () {
+  leerValoresJson()
   capturarValoresIntroducidos();
-  guardarValoresEnArray();
-  guardarValoresEnJson();
+  guardarTareaEnArrayTemporal();
+  
   crearElementoCard();
 })

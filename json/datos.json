@@ -1,33 +1,25 @@
 {
   "tareas": [
     {
-      "id": 0,
+      "id": 1000,
       "tarea": "Comprar el pan",
       "notas": "Pan de centeno",
       "Completada": false,
       "eliminada": false
     },
     {
-      "id": 1,
+      "id": 1001,
       "tarea": "Sacar al perro",
       "notas": "Recoger residuos",
       "Completada": false,
       "eliminada": false
     },
     {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
+      "id": 1,
+      "tarea": "tarea 1                            ",
+      "notas": "notas 1",
+      "completada": false,
+      "eliminada": false
     }
   ]
 }

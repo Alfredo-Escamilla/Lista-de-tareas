@@ -1,25 +1,53 @@
 {
   "tareas": [
     {
-      "id": 1000,
-      "tarea": "Comprar el pan",
-      "notas": "Pan de centeno",
-      "Completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 1001,
-      "tarea": "Sacar al perro",
-      "notas": "Recoger residuos",
-      "Completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 1,
-      "tarea": "tarea 1                            ",
-      "notas": "notas 1",
+      "tarea": "Dejar de tomar vino tinto",
+      "notas": "nota 1",
       "completada": false,
-      "eliminada": false
+      "eliminada": false,
+      "id": 1
+    },
+    {
+      "tarea": "Dejar de tomar vino tinto",
+      "notas": "tarea 2",
+      "completada": false,
+      "eliminada": false,
+      "id": 2
+    },
+    {
+      "tarea": "Dejar de tomar vino tinto",
+      "notas": "Tarea 2",
+      "completada": false,
+      "eliminada": false,
+      "id": 3
+    },
+    {
+      "tarea": "Dejar de tomar vino blanco frio",
+      "notas": "tarea 4",
+      "completada": false,
+      "eliminada": false,
+      "id": 4
+    },
+    {
+      "tarea": "Dejar de tomar vino blanco frio malo",
+      "notas": "Tarea 5",
+      "completada": false,
+      "eliminada": false,
+      "id": 5
+    },
+    {
+      "tarea": "Dejar de tomar vino tinto",
+      "notas": "9966",
+      "completada": false,
+      "eliminada": false,
+      "id": 6
+    },
+    {
+      "tarea": "Dejar de tomar vino blanco",
+      "notas": "tarea 7",
+      "completada": false,
+      "eliminada": false,
+      "id": 7
     }
   ]
 }

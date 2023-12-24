@@ -14,39 +14,39 @@ let textoTarea
 const rutaJson = "json/datos.json";
 
 
-function cargaDeDatos() {
-  leerValoresJson();
+async function cargaDeDatos() {
+  await leerValoresJson();
   console.log(arrayTemporal.length);
   console.log(arrayTemporal);
   for (let i = 0; i < arrayTemporal.length; i++) {
     textoTarea = arrayTemporal[i].tarea;
-    valorCajaTarea = textoTarea.slice(0, 35).padEnd(35, ' ');
-    nuevaTarea = document.querySelector("#objetoTarea");
-    elementos = `
-    <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
-      <tr>
-        <td style="width: 60%;"><pre>${valorCajaTarea}<pre></td>
-        <td style="width: 18%;">
-          <button class="botones" id="finish"><i class="fa-solid fa-flag-checkered"></i></button> 
-          <button class="botones" id="edit"><i class="fa-solid fa-pen-to-square"></i></button>
-          <button class="botones" id="delete"><i class="fa fa-trash-alt"></i></button>
-        </td>
-      </tr>
-    </table>`;
-    nuevaTarea.insertAdjacentHTML("beforeend", elementos);
-    
+    crearElementoCard();
 }
   
 }
-
-
+async function guardarDatosEnJson() {
+const rutaJsonDeVuelta = "http://localhost:3000/tareas";
+  try {
+    const responseVuelta = await fetch(rutaJsonDeVuelta, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(nuevoRegistro),
+    });
+    const resultadoVuelta = await responseVuelta.json();
+  } catch (error) {
+    console.log("Error en el nuevo registro");
+  }
+}
 
 function capturarValoresIntroducidos() {
   valorCajaTarea = document.getElementById("cajaTextoTarea").value;
   valorCajaNotas = document.getElementById("cajaTextoNotas").value;
 }
 
-async function leerValoresJson() {
+ function leerValoresJson() {
+  return new Promise(async resolve => {
   try {
     const response = await fetch(rutaJson);
     const responseData = await response.json();
@@ -59,6 +59,7 @@ async function leerValoresJson() {
       </div> `;
     nuevaTarea.insertAdjacentHTML("beforeend", errorJson);
   }
+})
 }
 
 function guardarTareaEnArrayTemporal() {
@@ -72,12 +73,10 @@ function guardarTareaEnArrayTemporal() {
   arrayTemporal.push(nuevoRegistro);
 }
 
-
-
 function crearElementoCard() {
   valorCajaTarea = valorCajaTarea.slice(0, 35).padEnd(35, ' ');
   nuevaTarea = document.querySelector("#objetoTarea");
-  elementos = `
+  let elementos = `
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
     	<td style="width: 60%;"><pre>${valorCajaTarea}<pre></td>
@@ -92,9 +91,9 @@ function crearElementoCard() {
 }
 
 botonGuardarTarea.addEventListener("click", function () {
-  leerValoresJson()
+  leerValoresJson();
   capturarValoresIntroducidos();
   guardarTareaEnArrayTemporal();
-  
   crearElementoCard();
+  guardarDatosEnJson();
 })

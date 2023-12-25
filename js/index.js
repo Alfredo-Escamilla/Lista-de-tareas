@@ -14,14 +14,13 @@ let textoTarea
 const rutaJson = "json/datos.json";
 
 
-async function cargaDeDatos() {
-  await leerValoresJson();
-  console.log(arrayTemporal.length);
-  console.log(arrayTemporal);
-  for (let i = 0; i < arrayTemporal.length; i++) {
+function cargaDeDatos() {
+   leerValoresJson().then(() => {
+   for (let i = 0; i < arrayTemporal.length; i++) {
     textoTarea = arrayTemporal[i].tarea;
-    crearElementoCard();
-}
+    crearElementoCard(textoTarea);
+   }
+})
   
 }
 async function guardarDatosEnJson() {
@@ -46,11 +45,12 @@ function capturarValoresIntroducidos() {
 }
 
  function leerValoresJson() {
-  return new Promise(async resolve => {
+  return new Promise(async (resolve) => {
   try {
     const response = await fetch(rutaJson);
     const responseData = await response.json();
-    arrayTemporal.push(responseData);
+    arrayTemporal = [...responseData.tareas];
+    resolve()
    } catch (error) {
     let errorJson = `
       <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
@@ -73,13 +73,13 @@ function guardarTareaEnArrayTemporal() {
   arrayTemporal.push(nuevoRegistro);
 }
 
-function crearElementoCard() {
-  valorCajaTarea = valorCajaTarea.slice(0, 35).padEnd(35, ' ');
+function crearElementoCard(tarea) {
+  let task = tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   let elementos = `
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
-    	<td style="width: 60%;"><pre>${valorCajaTarea}<pre></td>
+    	<td style="width: 60%;"><pre>${task}<pre></td>
     	<td style="width: 18%;">
     		<button class="botones" id="finish"><i class="fa-solid fa-flag-checkered"></i></button> 
     		<button class="botones" id="edit"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -94,6 +94,6 @@ botonGuardarTarea.addEventListener("click", function () {
   leerValoresJson();
   capturarValoresIntroducidos();
   guardarTareaEnArrayTemporal();
-  crearElementoCard();
+  crearElementoCard(valorCajaTarea);
   guardarDatosEnJson();
 })

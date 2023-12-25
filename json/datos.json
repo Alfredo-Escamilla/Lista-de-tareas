@@ -48,6 +48,27 @@
       "completada": false,
       "eliminada": false,
       "id": 7
+    },
+    {
+      "tarea": "tarea",
+      "notas": "tarea de la nueva era",
+      "completada": false,
+      "eliminada": false,
+      "id": 8
+    },
+    {
+      "tarea": "Dejar de tomar vino blanco frio malo",
+      "notas": "tarea",
+      "completada": false,
+      "eliminada": false,
+      "id": 9
+    },
+    {
+      "tarea": "tarea",
+      "notas": "tarea de la nueva era que ya funciona",
+      "completada": false,
+      "eliminada": false,
+      "id": 10
     }
   ]
 }

@@ -96,7 +96,8 @@ function crearElementoCard(tarea) {
 document.addEventListener("click", function(e) {
   console.log("Entrando en document.addEventListener");
   e.preventDefault();
-  let buttonToRemove = e.target.parentNode.childNodes[2];
+  let evento = e.target;
+  console.log(evento);
 });
 
 

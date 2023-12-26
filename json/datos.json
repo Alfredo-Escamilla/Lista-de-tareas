@@ -1,74 +1,32 @@
 {
   "tareas": [
     {
-      "tarea": "Dejar de tomar vino tinto",
-      "notas": "nota 1",
-      "completada": false,
-      "eliminada": false,
-      "id": 1
-    },
-    {
-      "tarea": "Dejar de tomar vino tinto",
-      "notas": "tarea 2",
-      "completada": false,
-      "eliminada": false,
-      "id": 2
-    },
-    {
-      "tarea": "Dejar de tomar vino tinto",
-      "notas": "Tarea 2",
-      "completada": false,
-      "eliminada": false,
-      "id": 3
-    },
-    {
-      "tarea": "Dejar de tomar vino blanco frio",
-      "notas": "tarea 4",
-      "completada": false,
-      "eliminada": false,
-      "id": 4
-    },
-    {
-      "tarea": "Dejar de tomar vino blanco frio malo",
-      "notas": "Tarea 5",
-      "completada": false,
-      "eliminada": false,
-      "id": 5
-    },
-    {
-      "tarea": "Dejar de tomar vino tinto",
-      "notas": "9966",
-      "completada": false,
-      "eliminada": false,
-      "id": 6
-    },
-    {
-      "tarea": "Dejar de tomar vino blanco",
-      "notas": "tarea 7",
-      "completada": false,
-      "eliminada": false,
-      "id": 7
-    },
-    {
+      "id": 1,
       "tarea": "tarea",
-      "notas": "tarea de la nueva era",
+      "notas": "Nota  ",
       "completada": false,
-      "eliminada": false,
-      "id": 8
+      "eliminada": false
     },
     {
-      "tarea": "Dejar de tomar vino blanco frio malo",
-      "notas": "tarea",
+      "id": 2,
+      "tarea": "tarea 2",
+      "notas": "Nota  ",
       "completada": false,
-      "eliminada": false,
-      "id": 9
+      "eliminada": false
     },
     {
+      "id": 3,
       "tarea": "tarea",
-      "notas": "tarea de la nueva era que ya funciona",
+      "notas": "Nota  ",
       "completada": false,
-      "eliminada": false,
-      "id": 10
+      "eliminada": false
+    },
+    {
+      "id": 4,
+      "tarea": "tarea",
+      "notas": "Nota  ",
+      "completada": false,
+      "eliminada": false
     }
   ]
 }

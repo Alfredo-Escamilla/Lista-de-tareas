@@ -2,7 +2,7 @@ let array = [];
 let botonGuardarTarea = document.getElementById("botonGuardarTarea");
 let valorCajaTarea;
 let valorCajaNotas;
-let indiceArray;
+let indiceArray = 0;
 let completada = false;
 let eliminada = false;
 let objetoArray;
@@ -74,6 +74,8 @@ function guardarTareaEnArrayTemporal() {
 }
 
 function crearElementoCard(tarea) {
+  let longitudArray = arrayTemporal.length;
+  console.log(longitudArray);
   let task = tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   let elementos = `
@@ -81,14 +83,23 @@ function crearElementoCard(tarea) {
     <tr>
     	<td style="width: 60%;"><pre>${task}<pre></td>
     	<td style="width: 18%;">
-    		<button class="botones" id="finish"><i class="fa-solid fa-flag-checkered"></i></button> 
-    		<button class="botones" id="edit"><i class="fa-solid fa-pen-to-square"></i></button>
-    		<button class="botones" id="delete"><i class="fa fa-trash-alt"></i></button>
+    		<button class="finish" id="${longitudArray}"><i class="fa-solid fa-flag-checkered"></i></button> 
+    		<button class="edit" id="${longitudArray}"><i class="fa-solid fa-pen-to-square"></i></button>
+    		<button class="delete id="${longitudArray}"><i class="fa fa-trash-alt"></i></button>
     	</td>
     </tr>
   </table>`;
   nuevaTarea.insertAdjacentHTML("beforeend", elementos);
+  longitudArray++;
 }
+
+document.addEventListener("click", function(e) {
+  console.log("Entrando en document.addEventListener");
+  e.preventDefault();
+  let buttonToRemove = e.target.parentNode.childNodes[2];
+});
+
+
 
 botonGuardarTarea.addEventListener("click", function () {
   leerValoresJson();

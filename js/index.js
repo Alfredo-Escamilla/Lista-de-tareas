@@ -10,20 +10,19 @@ let nuevaTarea;
 let conversionRegistro;
 let arrayTemporal = [];
 let nuevoRegistro;
-let textoTarea
+let textoTarea;
 const rutaJson = "json/datos.json";
-
 
 function cargaDeDatos() {
    leerValoresJson().then(() => {
    for (let i = 0; i < arrayTemporal.length; i++) {
     textoTarea = arrayTemporal[i].tarea;
-    crearElementoCard(textoTarea);
+    crearElementoCard(arrayTemporal[i]);
    }
 })
   
 }
-async function guardarDatosEnJson() {
+async function guardarDatosEnJson(nuevoRegistro) {
 const rutaJsonDeVuelta = "http://localhost:3000/tareas";
   try {
     const responseVuelta = await fetch(rutaJsonDeVuelta, {
@@ -33,7 +32,6 @@ const rutaJsonDeVuelta = "http://localhost:3000/tareas";
       },
       body: JSON.stringify(nuevoRegistro),
     });
-    const resultadoVuelta = await responseVuelta.json();
   } catch (error) {
     console.log("Error en el nuevo registro");
   }
@@ -73,33 +71,67 @@ function guardarTareaEnArrayTemporal() {
   arrayTemporal.push(nuevoRegistro);
 }
 
-function crearElementoCard(tarea) {
-  let longitudArray = arrayTemporal.length;
-  console.log(longitudArray);
-  let task = tarea.slice(0, 35).padEnd(35, " ");
+function crearElementoCard(arrayTemporal) {
+  let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   let elementos = `
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
-    	<td style="width: 60%;"><pre>${task}<pre></td>
+    	<td style="width: 60%;"><pre>${nombreTarea}<pre></td>
     	<td style="width: 18%;">
-    		<button class="finish" id="${longitudArray}"><i class="fa-solid fa-flag-checkered"></i></button> 
-    		<button class="edit" id="${longitudArray}"><i class="fa-solid fa-pen-to-square"></i></button>
-    		<button class="delete id="${longitudArray}"><i class="fa fa-trash-alt"></i></button>
+    		<button class="finish"><i class="fa-solid fa-flag-checkered"></i></button> 
+    		<button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
+    		<button class="delete"><i class="fa fa-trash-alt"></i></button>
     	</td>
     </tr>
   </table>`;
   nuevaTarea.insertAdjacentHTML("beforeend", elementos);
-  longitudArray++;
 }
 
-document.addEventListener("click", function(e) {
-  console.log("Entrando en document.addEventListener");
-  e.preventDefault();
-  let evento = e.target.parentNode;
-  console.log(evento);
-});
 
+function editarTarea(id) {
+  alert(`Esta es la tareas ${id}`);
+  ventanaModal();
+}
+
+
+function ventanaModal() {
+  const ventanaModal =
+  `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  bis_skin_checked="1">
+  <div class="modal-dialog" bis_skin_checked="1">
+    <div class="modal-content" bis_skin_checked="1">
+      <div class="modal-header" bis_skin_checked="1">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva tarea</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" bis_skin_checked="1">
+        <form>
+          <div class="mb-3" bis_skin_checked="1">
+            <label for="recipient-name" class="col-form-label">Tarea:</label>
+            <input type="text" class="form-control" id="cajaTextoTarea">
+          </div>
+          <div class="mb-3" bis_skin_checked="1">
+            <label for="message-text" class="col-form-label">Notas:</label>
+            <textarea class="form-control" id="cajaTextoNotas"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer" bis_skin_checked="1">
+        <button id="buttonCancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="botonGuardarTarea" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar
+          tarea</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+document.body.insertAdjacentHTML("beforeend", ventanaModal);
+// Encuentra el modal que acabas de agregar al DOM
+const modal = document.getElementById("exampleModal");
+// Inicializa el modal utilizando Bootstrap
+const myModal = new bootstrap.Modal(modal);
+myModal.show();
+}
 
 
 botonGuardarTarea.addEventListener("click", function () {

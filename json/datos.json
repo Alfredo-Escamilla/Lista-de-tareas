@@ -27,6 +27,13 @@
       "notas": "Nota  ",
       "completada": false,
       "eliminada": false
+    },
+    {
+      "id": 5,
+      "tarea": "Dejar de tomar vino tinto",
+      "notas": "",
+      "completada": false,
+      "eliminada": false
     }
   ]
 }

@@ -74,7 +74,6 @@ function guardarTareaEnArrayTemporal() {
 }
 
 function crearElementoCard(arrayTemporal) {
-  console.log(arrayTemporal);
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   let elementos = `
@@ -141,5 +140,5 @@ botonGuardarTarea.addEventListener("click", function () {
   capturarValoresIntroducidos();
   guardarTareaEnArrayTemporal();
   crearElementoCard(nuevoRegistro);
-  guardarDatosEnJson();
+  guardarDatosEnJson(nuevoRegistro);
 })

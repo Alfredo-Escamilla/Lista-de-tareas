@@ -34,6 +34,41 @@
       "notas": "",
       "completada": false,
       "eliminada": false
+    },
+    {
+      "id": 6,
+      "tarea": "tarea nueva 65",
+      "notas": "nueva día 27",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 7,
+      "tarea": "tarea nueva 65",
+      "notas": "nueva día 27",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 8,
+      "tarea": "Tarea nueva 19:40",
+      "notas": "nueva día 27",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 9,
+      "tarea": "tarea nueva que no se pinta",
+      "notas": "nueva día 27",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 10,
+      "tarea": "Tomar bitter kas",
+      "notas": "Está muy rico",
+      "completada": false,
+      "eliminada": false
     }
   ]
 }

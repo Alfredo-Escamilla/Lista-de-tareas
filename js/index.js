@@ -22,6 +22,7 @@ function cargaDeDatos() {
 })
   
 }
+
 async function guardarDatosEnJson(nuevoRegistro) {
 const rutaJsonDeVuelta = "http://localhost:3000/tareas";
   try {
@@ -61,6 +62,7 @@ function capturarValoresIntroducidos() {
 }
 
 function guardarTareaEnArrayTemporal() {
+  indiceArray = arrayTemporal.length + 1;
   nuevoRegistro = {
     id: indiceArray,
     tarea: valorCajaTarea,
@@ -72,6 +74,7 @@ function guardarTareaEnArrayTemporal() {
 }
 
 function crearElementoCard(arrayTemporal) {
+  console.log(arrayTemporal);
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   let elementos = `
@@ -80,7 +83,7 @@ function crearElementoCard(arrayTemporal) {
     	<td style="width: 60%;"><pre>${nombreTarea}<pre></td>
     	<td style="width: 18%;">
     		<button class="finish"><i class="fa-solid fa-flag-checkered"></i></button> 
-    		<button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
+    		<button class="edit" onclick="editarTarea(${arrayTemporal})"><i class="fa-solid fa-pen-to-square"></i></button>
     		<button class="delete"><i class="fa fa-trash-alt"></i></button>
     	</td>
     </tr>
@@ -89,13 +92,12 @@ function crearElementoCard(arrayTemporal) {
 }
 
 
-function editarTarea(id) {
-  alert(`Esta es la tareas ${id}`);
-  ventanaModal();
+function editarTarea(tarea) {
+  ventanaModal(tarea);
 }
 
 
-function ventanaModal() {
+function ventanaModal(tarea) {
   const ventanaModal =
   `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
   bis_skin_checked="1">
@@ -109,11 +111,11 @@ function ventanaModal() {
         <form>
           <div class="mb-3" bis_skin_checked="1">
             <label for="recipient-name" class="col-form-label">Tarea:</label>
-            <input type="text" class="form-control" id="cajaTextoTarea">
+            <input type="text" class="form-control" id="cajaTextoTarea" value="${tarea.tarea}>
           </div>
           <div class="mb-3" bis_skin_checked="1">
             <label for="message-text" class="col-form-label">Notas:</label>
-            <textarea class="form-control" id="cajaTextoNotas"></textarea>
+            <textarea class="form-control" id="cajaTextoNotas">${tarea.notas}</textarea>
           </div>
         </form>
       </div>
@@ -125,6 +127,7 @@ function ventanaModal() {
     </div>
   </div>
 </div>`;
+
 document.body.insertAdjacentHTML("beforeend", ventanaModal);
 // Encuentra el modal que acabas de agregar al DOM
 const modal = document.getElementById("exampleModal");
@@ -135,9 +138,8 @@ myModal.show();
 
 
 botonGuardarTarea.addEventListener("click", function () {
-  leerValoresJson();
   capturarValoresIntroducidos();
   guardarTareaEnArrayTemporal();
-  crearElementoCard(valorCajaTarea);
+  crearElementoCard(nuevoRegistro);
   guardarDatosEnJson();
 })

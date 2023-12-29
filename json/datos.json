@@ -2,8 +2,15 @@
   "tareas": [
     {
       "id": 1,
-      "tarea": "Tarea 1.",
+      "tarea": "Tarea 1. hastalaguevos",
       "notas": "Notas 1",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 2,
+      "tarea": "tarea 2000",
+      "notas": "tarea 2",
       "completada": false,
       "eliminada": false
     }

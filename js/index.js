@@ -51,7 +51,7 @@ function leerValoresJson() {
     try {
       const response = await fetch(rutaJson);
       const responseData = await response.json();
-      arrayTemporal = 0;
+      arrayTemporal.length = 0;
       arrayTemporal = [...responseData.tareas];
       resolve()
     } catch (error) {
@@ -174,9 +174,9 @@ function botonGuardarTarea() {
 
 function botonActualizarTarea(tareaId) {
   capturarValoresIntroducidos();
-  actualizarJson(tareaId);
-  cargaDeDatos();
-
+  actualizarJson(tareaId).then(() => {
+    cargaDeDatos();
+  });
 }
 
 async function actualizarJson(tareaId) {
@@ -197,6 +197,28 @@ async function actualizarJson(tareaId) {
       body: JSON.stringify(tarea),
     });
   } catch (error) {
-    console.log("Error en el nuevo registro");
+    console.log(error);
+  }
+}
+
+async function actualizarJson(tareaId) {
+  const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`; 
+  const tarea = {
+    id: tareaId,
+    tarea: valorCajaTarea,
+    notas: valorCajaNotas,
+    completada: completada,
+    eliminada: eliminada
+  }
+  try {
+    await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(tarea),
+    });
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -2,71 +2,36 @@
   "tareas": [
     {
       "id": 1,
-      "tarea": "tarea",
-      "notas": "Nota  ",
+      "tarea": "Dejar de tomar vino tinto",
+      "notas": "tarea 1",
       "completada": false,
       "eliminada": false
     },
     {
       "id": 2,
       "tarea": "tarea 2",
-      "notas": "Nota  ",
+      "notas": "notas 2",
       "completada": false,
       "eliminada": false
     },
     {
       "id": 3,
-      "tarea": "tarea",
-      "notas": "Nota  ",
+      "tarea": "tarea 3",
+      "notas": "notas 3",
       "completada": false,
       "eliminada": false
     },
     {
       "id": 4,
-      "tarea": "tarea",
-      "notas": "Nota  ",
+      "tarea": "tarea 4",
+      "notas": "notas 4",
       "completada": false,
       "eliminada": false
     },
     {
       "id": 5,
-      "tarea": "Dejar de tomar vino tinto",
-      "notas": "",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 6,
-      "tarea": "tarea nueva 65",
-      "notas": "nueva día 27",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 7,
-      "tarea": "tarea nueva 65",
-      "notas": "nueva día 27",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 8,
-      "tarea": "Tarea nueva 19:40",
-      "notas": "nueva día 27",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 9,
-      "tarea": "tarea nueva que no se pinta",
-      "notas": "nueva día 27",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 10,
-      "tarea": "Tomar bitter kas",
-      "notas": "Está muy rico",
+      "tarea": "tarea 4 modificada",
+      "notas": "notas 4 modificada",
       "completada": false,
       "eliminada": false
     }

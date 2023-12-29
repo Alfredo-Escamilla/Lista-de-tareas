@@ -1,4 +1,4 @@
-let array = [];
+// let array = [];
 let botonGuardarTarea = document.getElementById("botonGuardarTarea");
 let valorCajaTarea;
 let valorCajaNotas;
@@ -11,6 +11,9 @@ let conversionRegistro;
 let arrayTemporal = [];
 let nuevoRegistro;
 let textoTarea;
+let tareaId;
+let tareaParaEditar;
+let arrayRecuperacion = [];
 const rutaJson = "json/datos.json";
 
 function cargaDeDatos() {
@@ -61,6 +64,39 @@ function capturarValoresIntroducidos() {
 })
 }
 
+
+function editarTarea(tareaId) {
+  console.log("Tarea Id: "); 
+  console.log(tareaId);
+  recuperarTarea(tareaId).then((tarea) => {
+    ventanaModal(tarea);
+  });
+ 
+}
+
+function recuperarTarea(tareaId) {
+  const apiUrl = `http://localhost:3000/tareas/${tareaId}`;
+  return new Promise(async (resolve) => {
+  try {
+    const response = await fetch(apiUrl);
+    const tarea = await response.json();
+    console.log("Contenido de tareaParEditar");
+    console.log(tarea);
+    resolve(tarea)
+   } catch (error) {
+    let errorJson = `
+      <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+        ${error.message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div> `;
+  }
+  
+  
+  
+})
+
+}
+
 function guardarTareaEnArrayTemporal() {
   indiceArray = arrayTemporal.length + 1;
   nuevoRegistro = {
@@ -81,9 +117,9 @@ function crearElementoCard(arrayTemporal) {
     <tr>
     	<td style="width: 60%;"><pre>${nombreTarea}<pre></td>
     	<td style="width: 18%;">
-    		<button class="finish"><i class="fa-solid fa-flag-checkered"></i></button> 
-    		<button class="edit" onclick="editarTarea(${arrayTemporal})"><i class="fa-solid fa-pen-to-square"></i></button>
-    		<button class="delete"><i class="fa fa-trash-alt"></i></button>
+    		<button class="finish onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-flag-checkered"></i></button> 
+    		<button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
+    		<button class="delete onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
     	</td>
     </tr>
   </table>`;
@@ -91,9 +127,6 @@ function crearElementoCard(arrayTemporal) {
 }
 
 
-function editarTarea(tarea) {
-  ventanaModal(tarea);
-}
 
 
 function ventanaModal(tarea) {
@@ -142,3 +175,4 @@ botonGuardarTarea.addEventListener("click", function () {
   crearElementoCard(nuevoRegistro);
   guardarDatosEnJson(nuevoRegistro);
 })
+

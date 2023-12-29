@@ -1,5 +1,5 @@
 // let array = [];
-let botonGuardarTarea = document.getElementById("botonGuardarTarea");
+// let botonGuardarTarea = document.getElementById("botonGuardarTarea");
 let valorCajaTarea;
 let valorCajaNotas;
 let indiceArray = 0;
@@ -17,17 +17,17 @@ let arrayRecuperacion = [];
 const rutaJson = "json/datos.json";
 
 function cargaDeDatos() {
-   leerValoresJson().then(() => {
-   for (let i = 0; i < arrayTemporal.length; i++) {
-    textoTarea = arrayTemporal[i].tarea;
-    crearElementoCard(arrayTemporal[i]);
-   }
-})
-  
+  leerValoresJson().then(() => {
+    for (let i = 0; i < arrayTemporal.length; i++) {
+      textoTarea = arrayTemporal[i].tarea;
+      crearElementoCard(arrayTemporal[i]);
+    }
+  })
+
 }
 
 async function guardarDatosEnJson(nuevoRegistro) {
-const rutaJsonDeVuelta = "http://localhost:3000/tareas";
+  const rutaJsonDeVuelta = "http://localhost:3000/tareas";
   try {
     const responseVuelta = await fetch(rutaJsonDeVuelta, {
       method: 'POST',
@@ -46,54 +46,52 @@ function capturarValoresIntroducidos() {
   valorCajaNotas = document.getElementById("cajaTextoNotas").value;
 }
 
- function leerValoresJson() {
+function leerValoresJson() {
   return new Promise(async (resolve) => {
-  try {
-    const response = await fetch(rutaJson);
-    const responseData = await response.json();
-    arrayTemporal = [...responseData.tareas];
-    resolve()
-   } catch (error) {
-    let errorJson = `
+    try {
+      const response = await fetch(rutaJson);
+      const responseData = await response.json();
+      arrayTemporal = 0;
+      arrayTemporal = [...responseData.tareas];
+      resolve()
+    } catch (error) {
+      let errorJson = `
       <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
         ${error.message}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div> `;
-    nuevaTarea.insertAdjacentHTML("beforeend", errorJson);
-  }
-})
+      nuevaTarea.insertAdjacentHTML("beforeend", errorJson);
+    }
+  })
 }
 
 
 function editarTarea(tareaId) {
-  console.log("Tarea Id: "); 
+  console.log("Tarea Id: ");
   console.log(tareaId);
   recuperarTarea(tareaId).then((tarea) => {
     ventanaModal(tarea);
   });
- 
+
 }
 
 function recuperarTarea(tareaId) {
   const apiUrl = `http://localhost:3000/tareas/${tareaId}`;
   return new Promise(async (resolve) => {
-  try {
-    const response = await fetch(apiUrl);
-    const tarea = await response.json();
-    console.log("Contenido de tareaParEditar");
-    console.log(tarea);
-    resolve(tarea)
-   } catch (error) {
-    let errorJson = `
+    try {
+      const response = await fetch(apiUrl);
+      const tarea = await response.json();
+      console.log("Contenido de tareaParEditar");
+      console.log(tarea);
+      resolve(tarea)
+    } catch (error) {
+      let errorJson = `
       <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
         ${error.message}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div> `;
-  }
-  
-  
-  
-})
+    }
+  })
 
 }
 
@@ -126,12 +124,9 @@ function crearElementoCard(arrayTemporal) {
   nuevaTarea.insertAdjacentHTML("beforeend", elementos);
 }
 
-
-
-
 function ventanaModal(tarea) {
   const ventanaModal =
-  `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    `<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
   bis_skin_checked="1">
   <div class="modal-dialog" bis_skin_checked="1">
     <div class="modal-content" bis_skin_checked="1">
@@ -143,36 +138,65 @@ function ventanaModal(tarea) {
         <form>
           <div class="mb-3" bis_skin_checked="1">
             <label for="recipient-name" class="col-form-label">Tarea:</label>
-            <input type="text" class="form-control" id="cajaTextoTarea" value="${tarea.tarea}>
+            <input type="text" class="form-control" id="cajaTextoTarea" value="${tarea ? tarea.tarea : ''}">
           </div>
           <div class="mb-3" bis_skin_checked="1">
             <label for="message-text" class="col-form-label">Notas:</label>
-            <textarea class="form-control" id="cajaTextoNotas">${tarea.notas}</textarea>
+            <textarea class="form-control" id="cajaTextoNotas">${tarea ? tarea.notas : ''}</textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer" bis_skin_checked="1">
         <button id="buttonCancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button id="botonGuardarTarea" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar
+        <button id="botonGuardarTarea" type="button" class="btn btn-primary" onclick="${tarea ? `botonActualizarTarea(${tarea.id})` : `botonGuardarTarea()`}" data-bs-dismiss="modal">Guardar
           tarea</button>
       </div>
     </div>
   </div>
 </div>`;
 
-document.body.insertAdjacentHTML("beforeend", ventanaModal);
-// Encuentra el modal que acabas de agregar al DOM
-const modal = document.getElementById("exampleModal");
-// Inicializa el modal utilizando Bootstrap
-const myModal = new bootstrap.Modal(modal);
-myModal.show();
+  document.body.insertAdjacentHTML("beforeend", ventanaModal);
+  // Encuentra el modal que acabas de agregar al DOM
+  const modal = document.getElementById("exampleModal");
+  // Inicializa el modal utilizando Bootstrap
+  const myModal = new bootstrap.Modal(modal);
+  myModal.show();
 }
 
 
-botonGuardarTarea.addEventListener("click", function () {
+// botonGuardarTarea.addEventListener("click", function () {
+function botonGuardarTarea() {
   capturarValoresIntroducidos();
   guardarTareaEnArrayTemporal();
   crearElementoCard(nuevoRegistro);
   guardarDatosEnJson(nuevoRegistro);
-})
+}
 
+function botonActualizarTarea(tareaId) {
+  capturarValoresIntroducidos();
+  actualizarJson(tareaId);
+  cargaDeDatos();
+
+}
+
+async function actualizarJson(tareaId) {
+  const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`; //http://localhost:3000/tareas
+  const tarea = {
+    id: tareaId,
+    tarea: valorCajaTarea,
+    notas: valorCajaNotas,
+    completada: completada,
+    eliminada: eliminada
+  }
+  try {
+    const responseVuelta = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(tarea),
+    });
+  } catch (error) {
+    console.log("Error en el nuevo registro");
+  }
+}

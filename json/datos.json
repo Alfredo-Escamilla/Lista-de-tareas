@@ -2,36 +2,8 @@
   "tareas": [
     {
       "id": 1,
-      "tarea": "Dejar de tomar vino tinto",
-      "notas": "tarea 1",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 2,
-      "tarea": "tarea 2",
-      "notas": "notas 2",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 3,
-      "tarea": "tarea 3",
-      "notas": "notas 3",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 4,
-      "tarea": "tarea 4",
-      "notas": "notas 4",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 5,
-      "tarea": "tarea 4 modificada",
-      "notas": "notas 4 modificada",
+      "tarea": "Tarea 1.",
+      "notas": "Notas 1",
       "completada": false,
       "eliminada": false
     }

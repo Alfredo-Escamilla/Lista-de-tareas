@@ -17,5 +17,5 @@ server.options('*', cors());
 server.use(middlewares);
 server.use(router);
 server.listen(3000, () => {
-    console.log('JSON Server is running');
+    console.log('El servidor JSON está en funcionamiento. Puerto de escucha 3000');
 });

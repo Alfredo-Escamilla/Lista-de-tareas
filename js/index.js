@@ -1,6 +1,3 @@
-// let array = [];
-// let botonGuardarTarea = document.getElementById("botonGuardarTarea");
-let valorCajaTarea;
 let valorCajaNotas;
 let indiceArray = 0;
 let completada = false;
@@ -26,7 +23,7 @@ function cargaDeDatos() {
 
 }
 
-async function guardarDatosEnJson(nuevoRegistro) {
+async function guardarDatosEnJson(tarea) {
   const rutaJsonDeVuelta = "http://localhost:3000/tareas";
   try {
     const responseVuelta = await fetch(rutaJsonDeVuelta, {
@@ -34,10 +31,9 @@ async function guardarDatosEnJson(nuevoRegistro) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(nuevoRegistro),
+      body: JSON.stringify(tarea),
     });
   } catch (error) {
-    console.log("Error en el nuevo registro");
   }
 }
 
@@ -67,8 +63,6 @@ function leerValoresJson() {
 
 
 function editarTarea(tareaId) {
-  console.log("Tarea Id: ");
-  console.log(tareaId);
   recuperarTarea(tareaId).then((tarea) => {
     ventanaModal(tarea);
   });
@@ -81,8 +75,6 @@ function recuperarTarea(tareaId) {
     try {
       const response = await fetch(apiUrl);
       const tarea = await response.json();
-      console.log("Contenido de tareaParEditar");
-      console.log(tarea);
       resolve(tarea)
     } catch (error) {
       let errorJson = `
@@ -93,6 +85,27 @@ function recuperarTarea(tareaId) {
     }
   })
 
+}
+
+
+
+async function borrarTarea(tareaId) {
+  // Se muestra la ventana de confirmación
+  if (window.confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
+    const rutaJsonDeVuelta = `http://localhost:3000/tareas/${tareaId}`;
+    try {
+      const responseVuelta = await fetch(rutaJsonDeVuelta, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+    } catch (error) {
+      console.error('Error en la solicitud de eliminación:', error);
+    }
+  } else {
+    console.log('La tarea no ha sido eliminada');
+  }
 }
 
 function guardarTareaEnArrayTemporal() {
@@ -115,9 +128,9 @@ function crearElementoCard(arrayTemporal) {
     <tr>
     	<td style="width: 60%;"><pre>${nombreTarea}<pre></td>
     	<td style="width: 18%;">
-    		<button class="finish onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-flag-checkered"></i></button> 
+    		<button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-flag-checkered"></i></button> 
     		<button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
-    		<button class="delete onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
+    		<button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
     	</td>
     </tr>
   </table>`;
@@ -197,28 +210,6 @@ async function actualizarJson(tareaId) {
       body: JSON.stringify(tarea),
     });
   } catch (error) {
-    console.log(error);
-  }
-}
-
-async function actualizarJson(tareaId) {
-  const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`; 
-  const tarea = {
-    id: tareaId,
-    tarea: valorCajaTarea,
-    notas: valorCajaNotas,
-    completada: completada,
-    eliminada: eliminada
-  }
-  try {
-    await fetch(apiUrl, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(tarea),
-    });
-  } catch (error) {
-    console.log(error);
+    alert(console.log(error));
   }
 }

@@ -87,10 +87,7 @@ function recuperarTarea(tareaId) {
 
 }
 
-
-
 async function borrarTarea(tareaId) {
-  // Se muestra la ventana de confirmación
   if (window.confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
     const rutaJsonDeVuelta = `http://localhost:3000/tareas/${tareaId}`;
     try {

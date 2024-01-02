@@ -1,3 +1,4 @@
+let valorCajaTarea;
 let valorCajaNotas;
 let indiceArray = 0;
 let completada = false;
@@ -9,6 +10,8 @@ let arrayTemporal = [];
 let tareaNueva;
 let textoTarea;
 let tareaId;
+let task;
+let notas;
 let tareaParaEditar;
 let arrayRecuperacion = [];
 const rutaJson = "json/datos.json";
@@ -149,7 +152,7 @@ function recuperarTarea(tareaId) {
       </div> `;
     }
   })
-
+  
 }
 
 
@@ -191,16 +194,19 @@ async function borrarTarea(tareaId) {
   }
 }
 
-async function cambiarEstadoCompletado(tareaId) {
+async function cambiarEstadoCompletado(tarea) {
   if (window.confirm('¿Estás seguro de marcar como completada la tarea?')) {
+    const tareaId = tarea.id;
+    const apiUrl = `http://localhost:3000/tareas/${tareaId}`;
+    tarea.completada = !tarea.completada
     try {
-      const tarea = await recuperarTarea(tareaId);
-      tarea.id = tareaId;
-      tarea.tarea = tarea.tarea;
-      tarea.notas = tarea.notas;
-      tarea.completada = tarea.completada ? false : true;
-      tarea.eliminada = tarea.eliminada;
-      console.log(tarea);
+      const responseVuelta = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(tarea),
+      });
     } catch (error) {
       console.error('Ocurrió un error al completar la tarea:', error);
     }
@@ -209,13 +215,12 @@ async function cambiarEstadoCompletado(tareaId) {
   }
 }
 
-
-async function completarTarea(tareaId) {
-  recuperarTarea(tareaId);
-  cambiarEstadoCompletado(tareaId);
-  actualizarCompletada(tareaId);
+function completarTarea(tareaId) {
+  recuperarTarea(tareaId).then((tarea) => {
+    cambiarEstadoCompletado(tarea);
+  });
+  
 }
-
 
 async function actualizarJson(tareaId) {
   const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`; 
@@ -223,29 +228,6 @@ async function actualizarJson(tareaId) {
     id: tareaId,
     tarea: valorCajaTarea,
     notas: valorCajaNotas,
-    completada: completada,
-    eliminada: eliminada
-  }
-  try {
-    const responseVuelta = await fetch(apiUrl, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(tarea),
-    });
-  } catch (error) {
-    alert(console.log(error));
-  }
-}
-
-
-async function actualizarCompletada(tareaId) {
-  const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`; 
-  const tarea = {
-    id: tareaId,
-    tarea: tarea.tarea,
-    notas: tarea.notas,
     completada: completada,
     eliminada: eliminada
   }

@@ -2,16 +2,37 @@
   "tareas": [
     {
       "id": 1,
-      "tarea": "Tarea 1111",
-      "notas": "Notas 1",
+      "tarea": "Uno",
+      "notas": "1",
       "completada": false,
       "eliminada": false
     },
     {
       "id": 2,
-      "tarea": "tarea 3000",
-      "notas": "tarea 2024.0.0",
+      "tarea": "dos",
+      "notas": "",
       "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 3,
+      "tarea": "tres",
+      "notas": "treesss",
+      "completada": true,
+      "eliminada": false
+    },
+    {
+      "id": 4,
+      "tarea": "cuatro",
+      "notas": "cuatro44444",
+      "completada": true,
+      "eliminada": false
+    },
+    {
+      "id": 5,
+      "tarea": "cinco",
+      "notas": "cinco555555",
+      "completada": true,
       "eliminada": false
     }
   ]

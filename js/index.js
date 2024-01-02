@@ -195,10 +195,11 @@ async function cambiarEstadoCompletado(tareaId) {
   if (window.confirm('¿Estás seguro de marcar como completada la tarea?')) {
     try {
       const tarea = await recuperarTarea(tareaId);
-      console.log(tarea);
-      console.log(tarea.completada);
+      tarea.id = tareaId;
+      tarea.tarea = tarea.tarea;
+      tarea.notas = tarea.notas;
       tarea.completada = tarea.completada ? false : true;
-      console.log(tarea.completada);
+      tarea.eliminada = tarea.eliminada;
       console.log(tarea);
     } catch (error) {
       console.error('Ocurrió un error al completar la tarea:', error);
@@ -212,7 +213,7 @@ async function cambiarEstadoCompletado(tareaId) {
 async function completarTarea(tareaId) {
   recuperarTarea(tareaId);
   cambiarEstadoCompletado(tareaId);
-  actualizarJson(tareaId);
+  actualizarCompletada(tareaId);
 }
 
 
@@ -222,6 +223,29 @@ async function actualizarJson(tareaId) {
     id: tareaId,
     tarea: valorCajaTarea,
     notas: valorCajaNotas,
+    completada: completada,
+    eliminada: eliminada
+  }
+  try {
+    const responseVuelta = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(tarea),
+    });
+  } catch (error) {
+    alert(console.log(error));
+  }
+}
+
+
+async function actualizarCompletada(tareaId) {
+  const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`; 
+  const tarea = {
+    id: tareaId,
+    tarea: tarea.tarea,
+    notas: tarea.notas,
     completada: completada,
     eliminada: eliminada
   }

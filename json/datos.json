@@ -13,20 +13,6 @@
       "notas": "tarea 2024",
       "completada": false,
       "eliminada": false
-    },
-    {
-      "id": 3,
-      "tarea": "Tarea 3",
-      "notas": "1 de enero 2024.",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 4,
-      "tarea": "256325",
-      "notas": "32563",
-      "completada": false,
-      "eliminada": false
     }
   ]
 }

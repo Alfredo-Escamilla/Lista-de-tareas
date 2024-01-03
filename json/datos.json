@@ -10,29 +10,29 @@
     {
       "id": 2,
       "tarea": "dos",
-      "notas": "",
+      "notas": "dos",
       "completada": false,
       "eliminada": false
     },
     {
       "id": 3,
       "tarea": "tres",
-      "notas": "treesss",
-      "completada": true,
-      "eliminada": false
-    },
-    {
-      "id": 4,
-      "tarea": "cuatro",
-      "notas": "cuatro44444",
-      "completada": true,
+      "notas": "tres",
+      "completada": false,
       "eliminada": false
     },
     {
       "id": 5,
-      "tarea": "cinco",
-      "notas": "cinco555555",
-      "completada": true,
+      "tarea": "tarea 5",
+      "notas": "5555",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 6,
+      "tarea": "tarea 6",
+      "notas": "6666666",
+      "completada": false,
       "eliminada": false
     }
   ]

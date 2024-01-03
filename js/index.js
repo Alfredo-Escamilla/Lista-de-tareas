@@ -3,17 +3,11 @@ let valorCajaNotas;
 let indiceArray = 0;
 let completada = false;
 let eliminada = false;
-let objetoArray;
 let nuevaTarea;
-let conversionRegistro;
 let arrayTemporal = [];
 let tareaNueva;
 let textoTarea;
 let tareaId;
-let task;
-let notas;
-let tareaParaEditar;
-let arrayRecuperacion = [];
 const rutaJson = "json/datos.json";
 
 function cargaDeDatos() {
@@ -157,7 +151,7 @@ function recuperarTarea(tareaId) {
 
 
 function guardarTareaEnArrayTemporal() {
-  indiceArray = arrayTemporal.length + 1;
+  indiceArray = arrayTemporal.id + 1;
   tareaNueva = {
     id: indiceArray,
     tarea: valorCajaTarea,

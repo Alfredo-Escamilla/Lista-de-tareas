@@ -12,11 +12,8 @@ const rutaJson = "json/datos.json";
 
 
 function creacionNuevaTarea(arrayTemporal) {
-  console.log(arrayTemporal);
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
-  console.log(arrayTemporal.eliminada);
-
   if (arrayTemporal.eliminada === true) {
     return;
   }
@@ -214,7 +211,6 @@ function botonActualizarTarea(tareaId) {
 
 async function confirmarBorrarTarea(tarea) {
   if (window.confirm('¿Estás seguro de realizar esta acción?')) {
-    console.log(tarea);
     const tareaId = tarea.id;
     const apiUrl = `http://localhost:3000/tareas/${tarea.id}`;
     tarea.eliminada = !tarea.eliminada
@@ -338,7 +334,6 @@ function limpiarPantalla() {
 function filtroCompletadas() {
   limpiarPantalla();
   cargaDeDatosCompletadas();
-  console.log('Filtro completadas');
 }
 
 function cargaDeDatosCompletadas() {
@@ -352,10 +347,8 @@ function cargaDeDatosCompletadas() {
 }
 
 function mostrarTareasCompletadas(arrayTemporal) {
-  console.log(arrayTemporal);
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
-  console.log(arrayTemporal.eliminada);
 
   if (arrayTemporal.completada === true) {
     let elementos = `
@@ -377,7 +370,6 @@ function mostrarTareasCompletadas(arrayTemporal) {
 function filtroEliminadas() { 
   limpiarPantalla();
   cargaDeDatosEliminadas();
-  console.log('Filtro eliminadas');
 }
 
 function cargaDeDatosEliminadas() {
@@ -391,10 +383,8 @@ function cargaDeDatosEliminadas() {
 }
 
 function mostrarTareasEliminadas(arrayTemporal) {
-  console.log(arrayTemporal);
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
-  console.log(arrayTemporal.eliminada);
 
   if (arrayTemporal.eliminada === true) {
     let elementos = `

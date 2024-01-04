@@ -48,6 +48,20 @@
       "notas": "Tres tres",
       "completada": false,
       "eliminada": false
+    },
+    {
+      "id": 8,
+      "tarea": "Hacer la comida de mañana",
+      "notas": "",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 9,
+      "tarea": "Hacer desayuno",
+      "notas": "",
+      "completada": false,
+      "eliminada": false
     }
   ]
 }

@@ -11,7 +11,7 @@
       "id": 2,
       "tarea": "dos",
       "notas": "os",
-      "completada": false,
+      "completada": true,
       "eliminada": false
     },
     {
@@ -39,7 +39,7 @@
       "id": 6,
       "tarea": "1000",
       "notas": "100",
-      "completada": false,
+      "completada": true,
       "eliminada": false
     },
     {
@@ -60,6 +60,13 @@
       "id": 9,
       "tarea": "Hacer desayuno",
       "notas": "",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 10,
+      "tarea": "Escuchar a las fulanitas",
+      "notas": "Menos a Eva",
       "completada": false,
       "eliminada": false
     }

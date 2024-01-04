@@ -256,6 +256,7 @@ function borrarTarea(tareaId) {
     confirmarBorrarTarea(tarea);
   });
 }
+
 function completarTarea(tareaId) {
   recuperarTarea(tareaId).then((tarea) => {
     cambiarEstadoCompletado(tarea);

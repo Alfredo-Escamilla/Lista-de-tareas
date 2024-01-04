@@ -21,8 +21,30 @@ function cargaDeDatos() {
 }
 
 function creacionNuevaTarea(arrayTemporal) {
+  console.log(arrayTemporal);
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
+  console.log(arrayTemporal.eliminada);
+  
+  if (arrayTemporal.eliminada === true){
+    return;
+  }
+
+  if (arrayTemporal.completada === true) {
+    let elementos = `
+    <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+      <tr>
+        <td style="width: 60%; background-color: #63f1e1;"><pre>${nombreTarea}<pre></td>
+        <td style="width: 18%; background-color: #63f1e1;">
+          <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
+          <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </table>`;
+    nuevaTarea.insertAdjacentHTML("beforeend", elementos);
+
+  } else {
   let elementos = `
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
@@ -35,7 +57,7 @@ function creacionNuevaTarea(arrayTemporal) {
     </tr>
   </table>`;
   nuevaTarea.insertAdjacentHTML("beforeend", elementos);
-}
+}}
 
 function ventanaModal(tarea) {
   const ventanaModal =
@@ -170,26 +192,49 @@ function botonActualizarTarea(tareaId) {
   });
 }
 
-async function borrarTarea(tareaId) {
-  if (window.confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
-    const rutaJsonDeVuelta = `http://localhost:3000/tareas/${tareaId}`;
+// async function borrarTarea(tareaId) {
+//   if (window.confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
+//     const rutaJsonDeVuelta = `http://localhost:3000/tareas/${tareaId}`;
+//     try {
+//       const responseVuelta = await fetch(rutaJsonDeVuelta, {
+//         method: 'DELETE',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         }
+//       });
+//     } catch (error) {
+//       console.error('Error en la solicitud de eliminación:', error);
+//     }
+//   } else {
+//     console.log('La tarea no ha sido eliminada');
+//   }
+// }
+
+
+async function confirmarBorrarTarea(tarea) {
+  if (window.confirm('¿Estás seguro de eliminar esta tarea?')) {
+    console.log(tarea);
+    const tareaId = tarea.id;
+    const apiUrl = `http://localhost:3000/tareas/${tarea.id}`;
+    tarea.eliminada = !tarea.eliminada
     try {
-      const responseVuelta = await fetch(rutaJsonDeVuelta, {
-        method: 'DELETE',
+      const responseVuelta = await fetch(apiUrl, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        body: JSON.stringify(tarea),
       });
     } catch (error) {
-      console.error('Error en la solicitud de eliminación:', error);
+      console.error('Ocurrió un error al eliminar la tarea:', error);
     }
   } else {
-    console.log('La tarea no ha sido eliminada');
+    alert('Se canceló la acción.');
   }
 }
 
 async function cambiarEstadoCompletado(tarea) {
-  if (window.confirm('¿Estás seguro de marcar como completada la tarea?')) {
+  if (window.confirm('¿Estás seguro de cambiar el estado de la tarea?')) {
     const tareaId = tarea.id;
     const apiUrl = `http://localhost:3000/tareas/${tareaId}`;
     tarea.completada = !tarea.completada
@@ -205,15 +250,19 @@ async function cambiarEstadoCompletado(tarea) {
       console.error('Ocurrió un error al completar la tarea:', error);
     }
   } else {
-    alert('La tarea no ha sido completada');
+    alert('Se canceló la acción.');
   }
 }
 
+function borrarTarea(tareaId) {
+  recuperarTarea(tareaId).then((tarea) => {
+    confirmarBorrarTarea(tarea);
+  });
+}
 function completarTarea(tareaId) {
   recuperarTarea(tareaId).then((tarea) => {
     cambiarEstadoCompletado(tarea);
   });
-  
 }
 
 async function actualizarJson(tareaId) {

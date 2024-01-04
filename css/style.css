@@ -16,7 +16,7 @@ a {
 
 h1,
 p {
-    font-family: 'Bungee Spice', sans-serif;
+    font-family: 'Foldit', sans-serif;
     text-align: center;
 }
 
@@ -27,7 +27,7 @@ p {
 
 
 
-.buttonAdd {
+/* .buttonAdd {
     width: 1.7em;
     height: 1.7em;
     background-color: #1f5bca;
@@ -36,7 +36,7 @@ p {
     border-radius: 50%;
     cursor: pointer;
     margin-bottom: 2em;
-}
+} */
 
 .flex-container {
     display: flex;

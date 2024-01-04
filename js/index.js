@@ -10,23 +10,14 @@ let textoTarea;
 let tareaId;
 const rutaJson = "json/datos.json";
 
-function cargaDeDatos() {
-  leerValoresJson().then(() => {
-    for (let i = 0; i < arrayTemporal.length; i++) {
-      textoTarea = arrayTemporal[i].tarea;
-      creacionNuevaTarea(arrayTemporal[i]);
-    }
-  })
-
-}
 
 function creacionNuevaTarea(arrayTemporal) {
   console.log(arrayTemporal);
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   console.log(arrayTemporal.eliminada);
-  
-  if (arrayTemporal.eliminada === true){
+
+  if (arrayTemporal.eliminada === true) {
     return;
   }
 
@@ -45,7 +36,7 @@ function creacionNuevaTarea(arrayTemporal) {
     nuevaTarea.insertAdjacentHTML("beforeend", elementos);
 
   } else {
-  let elementos = `
+    let elementos = `
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
     	<td style="width: 60%;"><pre>${nombreTarea}<pre></td>
@@ -56,8 +47,9 @@ function creacionNuevaTarea(arrayTemporal) {
     	</td>
     </tr>
   </table>`;
-  nuevaTarea.insertAdjacentHTML("beforeend", elementos);
-}}
+    nuevaTarea.insertAdjacentHTML("beforeend", elementos);
+  }
+}
 
 function ventanaModal(tarea) {
   const ventanaModal =
@@ -168,9 +160,18 @@ function recuperarTarea(tareaId) {
       </div> `;
     }
   })
-  
+
 }
 
+function cargaDeDatos() {
+  leerValoresJson().then(() => {
+    for (let i = 0; i < arrayTemporal.length; i++) {
+      textoTarea = arrayTemporal[i].tarea;
+      creacionNuevaTarea(arrayTemporal[i]);
+    }
+  })
+ 
+}
 
 function guardarTareaEnArrayTemporal() {
   indiceArray = arrayTemporal.id + 1;
@@ -212,7 +213,7 @@ function botonActualizarTarea(tareaId) {
 
 
 async function confirmarBorrarTarea(tarea) {
-  if (window.confirm('¿Estás seguro de eliminar esta tarea?')) {
+  if (window.confirm('¿Estás seguro de realizar esta acción?')) {
     console.log(tarea);
     const tareaId = tarea.id;
     const apiUrl = `http://localhost:3000/tareas/${tarea.id}`;
@@ -266,7 +267,7 @@ function completarTarea(tareaId) {
 }
 
 async function actualizarJson(tareaId) {
-  const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`; 
+  const apiUrl = `http://127.0.0.1:3000/tareas/${tareaId}`;
   const tarea = {
     id: tareaId,
     tarea: valorCajaTarea,
@@ -285,4 +286,127 @@ async function actualizarJson(tareaId) {
   } catch (error) {
     alert(console.log(error));
   }
+}
+
+
+function ventanaPrincipal() {
+
+const ventana = `
+<class="container">
+<div class="row align-content-center">
+    <div class="col">
+        <h1 class="display-6">To Do List</h1>
+    </div>
+</div>
+
+<div id="objetoTarea" class="toast show border-danger"
+    style=" margin-top: 2%; margin-left: auto; margin-right: auto; width: 400px; height: 70vh; overflow-y: scroll;">
+    <div class="card mt-2 p-1 border-warning" style="margin-left: 1.3em; margin-right: 1.3em;">
+        <div style="text-align: center;">Tus tareas:</div>
+    </div>
+</div>
+
+<div class="flex-container d-flex justify-content-evenly" style="margin-left: 20%; margin-right: 20%;">
+    <button type="button" id="buttonAdd" class="buttonAdd btn btn-primary"
+        onclick="ventanaModal()"><i class="fa-solid fa-square-plus"></i>
+    </button>
+    <div class="btn-group">
+        <button class="btn btn-warning btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fa-solid fa-filter"></i>
+        </button>
+        <ul class="dropdown-menu" style="">
+            <li><a class="dropdown-item" onclick="mostrarTodo()">Todas</a></li>
+            <li><a class="dropdown-item" onclick="filtroCompletadas()">Completadas</a></li>
+            <li><a class="dropdown-item" onclick="filtroEliminadas()">Eliminadas</a></li>
+        </ul>
+    </div>
+</div>` ;
+document.body.innerHTML = ventana;
+}
+
+function mostrarTodo() {
+  limpiarPantalla();
+  cargaDeDatos();
+}
+
+function limpiarPantalla() {
+  document.body.innerHTML = '';
+  ventanaPrincipal() 
+}
+
+function filtroCompletadas() {
+  limpiarPantalla();
+  cargaDeDatosCompletadas();
+  console.log('Filtro completadas');
+}
+
+function cargaDeDatosCompletadas() {
+  leerValoresJson().then(() => {
+    for (let i = 0; i < arrayTemporal.length; i++) {
+      textoTarea = arrayTemporal[i].tarea;
+      mostrarTareasCompletadas(arrayTemporal[i]);
+    }
+  })
+ 
+}
+
+function mostrarTareasCompletadas(arrayTemporal) {
+  console.log(arrayTemporal);
+  let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
+  nuevaTarea = document.querySelector("#objetoTarea");
+  console.log(arrayTemporal.eliminada);
+
+  if (arrayTemporal.completada === true) {
+    let elementos = `
+    <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+      <tr>
+        <td style="width: 60%; background-color: #63f1e1;"><pre>${nombreTarea}<pre></td>
+        <td style="width: 18%; background-color: #63f1e1;">
+          <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
+          <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </table>`;
+    nuevaTarea.insertAdjacentHTML("beforeend", elementos);
+
+  } 
+}
+
+function filtroEliminadas() { 
+  limpiarPantalla();
+  cargaDeDatosEliminadas();
+  console.log('Filtro eliminadas');
+}
+
+function cargaDeDatosEliminadas() {
+  leerValoresJson().then(() => {
+    for (let i = 0; i < arrayTemporal.length; i++) {
+      textoTarea = arrayTemporal[i].tarea;
+      mostrarTareasEliminadas(arrayTemporal[i]);
+    }
+  })
+ 
+}
+
+function mostrarTareasEliminadas(arrayTemporal) {
+  console.log(arrayTemporal);
+  let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
+  nuevaTarea = document.querySelector("#objetoTarea");
+  console.log(arrayTemporal.eliminada);
+
+  if (arrayTemporal.eliminada === true) {
+    let elementos = `
+    <table class="card mb-2 mt-2 mr-2 border-danger" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+      <tr>
+        <td style="color:white; width: 60%; background-color: rgb(219, 83, 70);"><pre>${nombreTarea}<pre></td>
+        <td style="text-align: center; width: 18%; background-color: rgb(219, 83, 70);">
+        <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-trash-can-arrow-up" style="color: #ffffff;"></i></button>
+        </td>
+      </tr>
+    </table>`;
+    nuevaTarea.insertAdjacentHTML("beforeend", elementos);
+
+  } 
 }

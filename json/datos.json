@@ -4,14 +4,14 @@
       "id": 1,
       "tarea": "Uno",
       "notas": "1",
-      "completada": false,
+      "completada": true,
       "eliminada": false
     },
     {
       "id": 2,
       "tarea": "dos",
       "notas": "os",
-      "completada": true,
+      "completada": false,
       "eliminada": false
     },
     {
@@ -19,21 +19,35 @@
       "tarea": "tres",
       "notas": "",
       "completada": false,
-      "eliminada": true
+      "eliminada": false
     },
     {
       "id": 4,
       "tarea": "cuatro",
       "notas": "",
       "completada": false,
-      "eliminada": true
+      "eliminada": false
     },
     {
       "id": 5,
       "tarea": "cinco",
       "notas": "",
       "completada": false,
-      "eliminada": true
+      "eliminada": false
+    },
+    {
+      "id": 6,
+      "tarea": "1000",
+      "notas": "100",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 7,
+      "tarea": "Tres",
+      "notas": "Tres tres",
+      "completada": true,
+      "eliminada": false
     }
   ]
 }

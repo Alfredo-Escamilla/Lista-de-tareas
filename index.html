@@ -41,23 +41,21 @@
             </div>
         </div>
 
-        <div class="flex-container d-flex justify-content-evenly" style="margin-left: 20%; margin-right: 20%;">
-            <button type="button" id="buttonAdd" class="buttonAdd btn btn-primary"
-                onclick="ventanaModal()"><i class="fa-solid fa-square-plus"></i>
+    <div class="flex-container d-flex justify-content-evenly" style="margin-left: 20%; margin-right: 20%;">
+        <button type="button" id="buttonAdd" class="buttonAdd btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Añadir tarea" onclick="ventanaModal()"><i class="fa-solid fa-square-plus"></i></button>
+        <div class="btn-group">
+            <button class="btn btn-warning btn dropdown-toggle" type="button" data-bs-toggle="tooltip" data-bs-toggle="dropdown" data-bs-placement="right" data-bs-title="Filtrar tareas" aria-expanded="false">
+                <i class="fa-solid fa-filter"></i>
             </button>
-            <div class="btn-group">
-                <button class="btn btn-warning btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <i class="fa-solid fa-filter"></i>
-                </button>
-                <ul class="dropdown-menu" style="">
-                    <li><a class="dropdown-item" href="#">Todas</a></li>
-                    <li><a class="dropdown-item" href="#">Completadas</a></li>
-                    <li><a class="dropdown-item" href="#">Eliminadas</a></li>
-                </ul>
-            </div>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" onclick="mostrarTodo()">Todas</a></li>
+              <li><a class="dropdown-item" onclick="filtroCompletadas()">Completadas</a></li>
+              <li><a class="dropdown-item" onclick="filtroEliminadas()">Eliminadas</a></li>
+            </ul>
         </div>
+    </div>
 
+        
 
         <!-- Inicio Ventana Modal -->
         <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"

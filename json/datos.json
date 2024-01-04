@@ -4,7 +4,7 @@
       "id": 1,
       "tarea": "Uno",
       "notas": "1",
-      "completada": true,
+      "completada": false,
       "eliminada": false
     },
     {
@@ -46,7 +46,7 @@
       "id": 7,
       "tarea": "Tres",
       "notas": "Tres tres",
-      "completada": true,
+      "completada": false,
       "eliminada": false
     }
   ]

@@ -69,13 +69,20 @@
       "notas": "Menos a Eva",
       "completada": false,
       "eliminada": false
+    },
+    {
+      "id": 11,
+      "tarea": "Tarea nueva",
+      "notas": "23",
+      "completada": false,
+      "eliminada": false
     }
   ],
-  "usuarios":[
+  "usuarios": [
     {
-      "idUsuario": 1,
-      "nombreUsuario": "Alfredo",
-      "password": "alfredoescamilla@hotmail.com"
+      "idUser": 1,
+      "user": "Alfredo",
+      "pass": "alfredoescamilla@hotmail.com"
     }
   ]
 }

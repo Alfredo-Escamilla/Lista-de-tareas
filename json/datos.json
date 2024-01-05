@@ -70,5 +70,12 @@
       "completada": false,
       "eliminada": false
     }
+  ],
+  "usuarios":[
+    {
+      "idUsuario": 1,
+      "nombreUsuario": "Alfredo",
+      "password": "alfredoescamilla@hotmail.com"
+    }
   ]
 }

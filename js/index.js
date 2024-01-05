@@ -8,7 +8,7 @@ let arrayTemporal = [];
 let tareaNueva;
 let textoTarea;
 let tareaId;
-const rutaJson = "json/datos.json";
+const rutaJson = "/json/datos.json";
 
 
 function creacionNuevaTarea(arrayTemporal) {

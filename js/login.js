@@ -3,11 +3,33 @@ let arrayTemporal = [];
 function login(usuario, password) {
     usuario = document.getElementById('usuario').value;
     password = document.getElementById('password').value;
-    cargaDeDatos();
+    cargaDeDatos(usuario, password);
 }
 
-function cargaDeDatos() {
+// function cargaDeDatos(usuario, password) {
+//     console.log('carga de datos función');
+//     console.log('Usuario introducido: ' + usuario);
+//     console.log('Password introducida: ' + password)
+//     leerJson().then(() => {
+//       for (let i = 0; i < arrayTemporal.length; i++) {
+//         let idUser = arrayTemporal[i].idUser;
+//         let user = arrayTemporal[i].user;
+//         let pass = arrayTemporal[i].pass;
+//         console.log('ID User: ' + idUser);
+//         console.log('Usuario: ' + user);
+//         console.log('Password: ' + pass);
+//         console.log('Usuario introducido: ' + usuario);
+//         console.log('Password introducida: ' + password)
+//         alert('STOP');
+//       }
+//     })
+   
+//   }
+
+  function cargaDeDatos(usuario, password) {
     console.log('carga de datos función');
+    console.log('Usuario introducido: ' + usuario);
+    console.log('Password introducida: ' + password)
     leerJson().then(() => {
       for (let i = 0; i < arrayTemporal.length; i++) {
         let idUser = arrayTemporal[i].idUser;
@@ -16,15 +38,18 @@ function cargaDeDatos() {
         console.log('ID User: ' + idUser);
         console.log('Usuario: ' + user);
         console.log('Password: ' + pass);
+        console.log('Usuario introducido: ' + usuario);
+        console.log('Password introducida: ' + password)
         alert('STOP');
       }
     })
    
   }
 
+
   async function leerJson() {
     try {
-        const rutaJson = "/json/datos.json";
+        const rutaJson = "json/datos.json";
         console.log('Iniciando lectura de datos');
         const response = await fetch(rutaJson);
         const responseData = await response.json();

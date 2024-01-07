@@ -4,8 +4,8 @@
       "id": 1,
       "tarea": "Uno",
       "notas": "1",
-      "completada": true,
-      "eliminada": false
+      "completada": false,
+      "eliminada": true
     },
     {
       "id": 2,
@@ -13,89 +13,13 @@
       "notas": "os",
       "completada": true,
       "eliminada": false
-    },
-    {
-      "id": 3,
-      "tarea": "tres00",
-      "notas": "",
-      "completada": true,
-      "eliminada": false
-    },
-    {
-      "id": 4,
-      "tarea": "4006",
-      "notas": "",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 5,
-      "tarea": "cinco",
-      "notas": "",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 6,
-      "tarea": "1000",
-      "notas": "100",
-      "completada": true,
-      "eliminada": false
-    },
-    {
-      "id": 7,
-      "tarea": "Tres",
-      "notas": "Tres tres",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 8,
-      "tarea": "Hacer la comida de ",
-      "notas": "",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 9,
-      "tarea": "Hacer desayuno",
-      "notas": "",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 10,
-      "tarea": "Escuchar a las fulanitas",
-      "notas": "Menos a Eva",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 11,
-      "tarea": "Tarea nueva",
-      "notas": "23",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 12,
-      "tarea": "tarea sin server.js",
-      "notas": "a",
-      "completada": true,
-      "eliminada": false
-    },
-    {
-      "id": 13,
-      "tarea": "tarea con node server.js",
-      "notas": "aaa",
-      "completada": false,
-      "eliminada": false
     }
+    
   ],
   "usuarios": [
     {
       "idUser": 1,
-      "email": "alfredo@alfredo.com",
+      "mail": "alfredo@alfredo.com",
       "pass": "alfredo"
     }
   ]

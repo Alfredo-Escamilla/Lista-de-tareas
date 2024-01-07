@@ -17,13 +17,13 @@ function cargaDeDatos(correo, contrasena) {
     leerJson().then(() => {
       for (let i = 0; i < arrayTemporal.length; i++) {
         let idUser = arrayTemporal[i].idUser;
-        let email = arrayTemporal[i].email;
+        let email = arrayTemporal[i].mail;
         let pass = arrayTemporal[i].pass;
         console.log('ID User: ' + idUser);
         console.log('Usuario: ' + email);
         console.log('Password: ' + pass);
         if (correo === email && contrasena === pass){
-          window.location.href = '/src/tareas.html?'
+          window.location.href = `/src/tareas.html?idUser=${idUser}`;
         }
         alert('STOP');
       }

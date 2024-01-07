@@ -9,9 +9,9 @@
     },
     {
       "id": 3,
-      "tarea": "tres00",
-      "notas": "",
-      "completada": true,
+      "tarea": "Tres",
+      "notas": "tres",
+      "completada": false,
       "eliminada": false
     }
   ],

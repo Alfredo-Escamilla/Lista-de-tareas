@@ -98,3 +98,8 @@ async function leerInicio() {
     alert('STOP CATCH');
   }
 }
+
+function ventanaPrincipal() {
+
+  }
+  

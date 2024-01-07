@@ -309,13 +309,13 @@ const ventana = `
 <div id="objetoTarea" class="toast show border-danger"
     style=" margin-top: 2%; margin-left: auto; margin-right: auto; width: 400px; height: 70vh; overflow-y: scroll;">
     <div class="card mt-2 p-1 border-warning" style="margin-left: 1.3em; margin-right: 1.3em;">
-        <div style="text-align: center;">Tus tareas:</div>
+        <div style="text-align: center;">Bienvenido ${nombreUser}. Tu lista de tareas:</div>
     </div>
 </div>
 
 <div class="flex-container d-flex justify-content-evenly" style="margin-left: 40%; margin-right: 40%;">
         <button type="button" id="buttonAdd" class="buttonAdd btn btn-success" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Añadir tarea" onclick="ventanaModal()"><i class="fa-solid fa-square-plus"></i></button>
-        <button type="button" id="buttonAdd" class="buttonAdd btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Inicio" onclick="retornarIndex()"><i class="fa-solid fa-right-from-bracket"></i></i></button>
+        <button type="button" id="buttonAdd" class="buttonAdd btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Salir" onclick="retornarIndex()"><i class="fa-solid fa-right-from-bracket"></i></i></button>
 
         <div class="btn-group">
             <button class="btn btn-warning btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="right" data-bs-title="Añadir tarea" aria-expanded="false">

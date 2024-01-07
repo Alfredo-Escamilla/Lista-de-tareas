@@ -10,9 +10,18 @@ let textoTarea;
 let tareaId;
 const rutaJson = "/json/datos.json";
 
-const urlParams = new URLSearchParams(window.location.search);
-const idUser = urlParams.get('idUser');
+var url = window.location.href;
+var searchParams = new URLSearchParams(url);
+var idUser = searchParams.get('idUser');
+var nombreUser = searchParams.get('nombreUser');
+var apellidoUser = searchParams.get('apellidoUser');
 console.log(idUser);
+console.log(nombreUser);
+console.log(apellidoUser);
+
+function retornarIndex() {
+  window.location.href = `/index.html`;
+}
 
 
 function creacionNuevaTarea(arrayTemporal) {
@@ -165,6 +174,7 @@ function recuperarTarea(tareaId) {
 }
 
 function cargaDeDatos() {
+  arrayTemporal = [];
   leerValoresJson().then(() => {
     for (let i = 0; i < arrayTemporal.length; i++) {
       textoTarea = arrayTemporal[i].tarea;
@@ -195,7 +205,7 @@ function botonActualizarTarea(tareaId) {
 }
 
 async function borrarTareaDef(tareaId) {
-  if (window.confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
+  if (window.confirm('¿Estás seguro de que deseas eliminar esta tarea?. Esta acción no se puede deshacer.')) {
     const rutaJsonDeVuelta = `http://localhost:3000/tareas/${tareaId}`;
     try {
       const responseVuelta = await fetch(rutaJsonDeVuelta, {
@@ -214,7 +224,7 @@ async function borrarTareaDef(tareaId) {
 
 
 async function confirmarBorrarTarea(tarea) {
-  if (window.confirm('¿Estás seguro de realizar esta acción?')) {
+  if (window.confirm('¿Estás seguro de eliminar la tarea?')) {
     const tareaId = tarea.id;
     const apiUrl = `http://localhost:3000/tareas/${tarea.id}`;
     tarea.eliminada = !tarea.eliminada
@@ -397,7 +407,7 @@ function mostrarTareasEliminadas(arrayTemporal) {
       <tr>
         <td style="color:white; width: 60%; background-color: rgb(219, 83, 70);"><pre>${nombreTarea}<pre></td>
         <td style="text-align: center; width: 18%; background-color: rgb(219, 83, 70);">
-        <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-trash-can-arrow-up" style="color: #ffffff;"></i></button>
+        <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-trash-can-arrow-up" style="color: #ffffff;"></i>  </button>
         <button class="delete" onclick="borrarTareaDef(${arrayTemporal.id})"><i class="fa-solid fa-fire" style="color: #ffffff;"></i></button>
         </td>
       </tr>

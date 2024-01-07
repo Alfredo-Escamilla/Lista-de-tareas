@@ -1,24 +1,32 @@
 {
   "tareas": [
     {
-      "id": 1,
-      "tarea": "Uno",
-      "notas": "1",
-      "completada": false,
-      "eliminada": true
-    },
-    {
       "id": 2,
       "tarea": "dos",
       "notas": "os",
       "completada": true,
       "eliminada": false
+    },
+    {
+      "id": 3,
+      "tarea": "tres00",
+      "notas": "",
+      "completada": true,
+      "eliminada": false
+    },
+    {
+      "id": 4,
+      "tarea": "Tarea 3",
+      "notas": "tres",
+      "completada": false,
+      "eliminada": true
     }
-    
   ],
   "usuarios": [
     {
       "idUser": 1,
+      "nombreUser": "Alfredo",
+      "apellidosUser": "Escamilla",
       "mail": "alfredo@alfredo.com",
       "pass": "alfredo"
     }

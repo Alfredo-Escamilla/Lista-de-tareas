@@ -23,7 +23,7 @@ function cargaDeDatos(correo, contrasena) {
         console.log('Usuario: ' + email);
         console.log('Password: ' + pass);
         if (correo === email && contrasena === pass){
-          window.location.href = '/src/tareas.html?idUser'
+          window.location.href = '/src/tareas.html?'
         }
         alert('STOP');
       }

@@ -28,7 +28,7 @@ function retornarIndex() {
 
 
 function creacionNuevaTarea(arrayTemporal) {
-  let nombreTarea = arrayTemporal.tarea.slice(0, 38).padEnd(38, " ");
+  let nombreTarea = arrayTemporal.tarea.slice(0, 24).padEnd(24, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   if (arrayTemporal.eliminada === true) {
     return;
@@ -38,8 +38,8 @@ function creacionNuevaTarea(arrayTemporal) {
     let elementos = `
     <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
-        <td style="width: 86.1%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 20%; background-color: #63f1e1;">
+        <td style="width: 85.1%; background-color: #63f1e1;">${nombreTarea}</td>
+        <td style="width: 13.9%; background-color: #63f1e1;">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
           <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
@@ -52,8 +52,8 @@ function creacionNuevaTarea(arrayTemporal) {
     let elementos = `
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
-    	<td style="width: 86.1%;">${nombreTarea}</td>
-    	<td style="width: 20%;">
+    	<td style="width: 85.1%;">${nombreTarea}</td>
+    	<td style="width: 13.9%;">
     		<button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-flag-checkered"></i></button> 
     		<button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
     		<button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
@@ -357,7 +357,7 @@ function cargaDeDatosCompletadas() {
 }
 
 function mostrarTareasCompletadas(arrayTemporal) {
-  let nombreTarea = arrayTemporal.tarea.slice(0, 38).padEnd(38, " ");
+  let nombreTarea = arrayTemporal.tarea.slice(0, 24).padEnd(24, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
 
   if (arrayTemporal.completada === true) {
@@ -365,7 +365,7 @@ function mostrarTareasCompletadas(arrayTemporal) {
     <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
         <td style="width: 86.1%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 20%; background-color: #63f1e1;">
+        <td style="width: 13.9%; background-color: #63f1e1;">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
           <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
@@ -393,7 +393,7 @@ function cargaDeDatosEliminadas() {
 }
 
 function mostrarTareasEliminadas(arrayTemporal) {
-  let nombreTarea = arrayTemporal.tarea.slice(0, 38).padEnd(38, " ");
+  let nombreTarea = arrayTemporal.tarea.slice(0, 24).padEnd(24, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
 
   if (arrayTemporal.eliminada === true) {
@@ -401,7 +401,7 @@ function mostrarTareasEliminadas(arrayTemporal) {
     <table class="card mb-2 mt-2 mr-2 border-danger" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
         <td style="color:white; width: 91.25%; background-color: rgb(219, 83, 70);">${nombreTarea}</td>
-        <td style="text-align: center; width: 20%; background-color: rgb(219, 83, 70);">
+        <td style="text-align: center; width: 8.75%; background-color: rgb(219, 83, 70);">
         <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-trash-can-arrow-up" style="color: #ffffff;"></i>  </button>
         <button class="delete" onclick="borrarTareaDef(${arrayTemporal.id})"><i class="fa-solid fa-fire" style="color: #ffffff;"></i></button>
         </td>

@@ -151,7 +151,7 @@ function recuperarTarea(tareaId) {
       resolve(tarea)
     } catch (error) {
       let errorJson = `
-      <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+      <div class="alert -warning alert-dismissible fade show" role="alert" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
         ${error.message}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div> `;

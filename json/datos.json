@@ -4,7 +4,7 @@
       "id": 1,
       "tarea": "Uno",
       "notas": "1",
-      "completada": false,
+      "completada": true,
       "eliminada": false
     },
     {
@@ -16,14 +16,14 @@
     },
     {
       "id": 3,
-      "tarea": "tres",
+      "tarea": "tres00",
       "notas": "",
-      "completada": false,
+      "completada": true,
       "eliminada": false
     },
     {
       "id": 4,
-      "tarea": "cuatro",
+      "tarea": "4006",
       "notas": "",
       "completada": false,
       "eliminada": false
@@ -51,7 +51,7 @@
     },
     {
       "id": 8,
-      "tarea": "Hacer la comida de mañana",
+      "tarea": "Hacer la comida de ",
       "notas": "",
       "completada": false,
       "eliminada": false
@@ -76,13 +76,27 @@
       "notas": "23",
       "completada": false,
       "eliminada": false
+    },
+    {
+      "id": 12,
+      "tarea": "tarea sin server.js",
+      "notas": "a",
+      "completada": true,
+      "eliminada": false
+    },
+    {
+      "id": 13,
+      "tarea": "tarea con node server.js",
+      "notas": "aaa",
+      "completada": false,
+      "eliminada": false
     }
   ],
   "usuarios": [
     {
       "idUser": 1,
-      "user": "Alfredo",
-      "pass": "alfredoescamilla@hotmail.com"
+      "email": "alfredo@alfredo.com",
+      "pass": "alfredo"
     }
   ]
 }

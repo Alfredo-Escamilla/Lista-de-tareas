@@ -100,6 +100,12 @@ async function leerInicio() {
 }
 
 function ventanaPrincipal() {
-
   }
-  
+
+function crearCuenta() {
+  window.location.href = `/src/crearusuario.html`;
+  }
+
+  function recuperarPassword() {
+    window.location.href = `/src/recuperarpass.html`;
+  }

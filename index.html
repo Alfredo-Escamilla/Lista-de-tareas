@@ -19,7 +19,7 @@
      <script defer src="/js/login.js"> </script>
 </head>
 <body onload="inicio(), ventanaPrincipal()">
-  
+
 <!-- Login 5 - Bootstrap Brain Component -->
 <section class="p-3 p-md-4 p-xl-5">
   <div class="container">
@@ -63,13 +63,13 @@
             <div class="row">
               <div class="col-12">
                 <hr class="mt-5 mb-4 border-secondary-subtle">
-                <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end">
-                  <a href="#!" class="link-secondary text-decoration-none">Crear nueva cuenta.</a>
-                  <a href="#!" class="link-secondary text-decoration-none">Recordar contraseña.</a>
+                <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-evenly">
+                  <button class="btn btn-info text-dark link-secondary text-decoration-none" onclick="crearCuenta()">Crear nueva cuenta.</button>
+                  <button class="btn btn-outline-secondary text-dark link-secondary text-decoration-none" onclick="recuperarPassword()" >Recordar contraseña.</button>
                 </div>
               </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-12">
                 <p class="mt-5 mb-4">O iniciar sesión con:</p>
                 <div class="d-flex gap-3 flex-column flex-xl-row">
@@ -87,7 +87,7 @@
                   </a>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

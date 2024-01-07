@@ -12,12 +12,15 @@ const rutaJson = "/json/datos.json";
 
 var url = window.location.href;
 var searchParams = new URLSearchParams(url);
-var idUser = searchParams.get('idUser');
-var nombreUser = searchParams.get('nombreUser');
-var apellidoUser = searchParams.get('apellidoUser');
-console.log(idUser);
+var idenUserCodificado = searchParams.get('idUser');
+var nombreUserCodificado = searchParams.get('nombreUser');
+var apellidosUserCodificado = searchParams.get('apellidosUser');
+const idenUser = decodeURIComponent(idenUserCodificado);
+const nombreUser = decodeURIComponent(nombreUserCodificado);
+const apellidosUser = decodeURIComponent(apellidosUserCodificado);
+console.log(idenUser);
 console.log(nombreUser);
-console.log(apellidoUser);
+console.log(apellidosUser);
 
 function retornarIndex() {
   window.location.href = `/index.html`;

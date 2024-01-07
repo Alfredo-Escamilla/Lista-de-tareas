@@ -227,7 +227,6 @@ async function borrarTareaDef(tareaId) {
 
 
 async function confirmarBorrarTarea(tarea) {
-  if (window.confirm('¿Estás seguro de eliminar la tarea?')) {
     const tareaId = tarea.id;
     const apiUrl = `http://localhost:3000/tareas/${tarea.id}`;
     tarea.eliminada = !tarea.eliminada
@@ -242,13 +241,10 @@ async function confirmarBorrarTarea(tarea) {
     } catch (error) {
       console.error('Ocurrió un error al eliminar la tarea:', error);
     }
-  } else {
-    alert('Se canceló la acción.');
-  }
 }
 
 async function cambiarEstadoCompletado(tarea) {
-  if (window.confirm('¿Estás seguro de cambiar el estado de la tarea?')) {
+ 
     const tareaId = tarea.id;
     const apiUrl = `http://localhost:3000/tareas/${tareaId}`;
     tarea.completada = !tarea.completada
@@ -263,9 +259,6 @@ async function cambiarEstadoCompletado(tarea) {
     } catch (error) {
       console.error('Ocurrió un error al completar la tarea:', error);
     }
-  } else {
-    alert('Se canceló la acción.');
-  }
 }
 
 function borrarTarea(tareaId) {
@@ -320,22 +313,21 @@ const ventana = `
     </div>
 </div>
 
-<div class="flex-container d-flex justify-content-evenly" style="margin-left: 20%; margin-right: 20%;">
-    <button type="button" id="buttonAdd" class="buttonAdd btn btn-primary"
-        onclick="ventanaModal()"><i class="fa-solid fa-square-plus"></i>
-    </button>
-    <div class="btn-group">
-        <button class="btn btn-warning btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <i class="fa-solid fa-filter"></i>
-        </button>
-        <ul class="dropdown-menu" style="">
-            <li><a class="dropdown-item" onclick="mostrarTodo()">Todas</a></li>
-            <li><a class="dropdown-item" onclick="filtroCompletadas()">Completadas</a></li>
-            <li><a class="dropdown-item" onclick="filtroEliminadas()">Eliminadas</a></li>
-        </ul>
-    </div>
-</div>` ;
+<div class="flex-container d-flex justify-content-evenly" style="margin-left: 40%; margin-right: 40%;">
+        <button type="button" id="buttonAdd" class="buttonAdd btn btn-success" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Añadir tarea" onclick="ventanaModal()"><i class="fa-solid fa-square-plus"></i></button>
+        <button type="button" id="buttonAdd" class="buttonAdd btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Inicio" onclick="retornarIndex()"><i class="fa-solid fa-right-from-bracket"></i></i></button>
+
+        <div class="btn-group">
+            <button class="btn btn-warning btn dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-placement="right" data-bs-title="Añadir tarea" aria-expanded="false">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+            <ul class="dropdown-menu" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Selecciona el filtro">
+              <li><a class="dropdown-item" onclick="mostrarTodo()">Todas</a></li>
+              <li><a class="dropdown-item" onclick="filtroCompletadas()">Completadas</a></li>
+              <li><a class="dropdown-item" onclick="filtroEliminadas()">Eliminadas</a></li>
+            </ul>
+        </div>
+    </div>` ;
 document.body.innerHTML = ventana;
 }
 

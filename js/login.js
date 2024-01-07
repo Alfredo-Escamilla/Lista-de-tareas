@@ -24,6 +24,8 @@ function cargaDeDatos(correo, contrasena) {
       console.log('ID User: ' + idenUser);
       console.log('Usuario: ' + email);
       console.log('Password: ' + pass);
+      console.log('Nombre usuario: ' + nombreUser);
+      console.log('Apellido usuario: ' + apellidosUser);
       if (correo === email && contrasena === pass) {
         codificarUrl(idenUser, nombreUser, apellidosUser);
         // window.location.href = `/src/tareas.html?&idUser=${idenUser}&nombreUser=${nombreUser}&apellidosUser=${apellidosUser}`;

@@ -1,4 +1,4 @@
-const rutaJson = "json/datos.json";
+const rutaJson = "/json/datos.json";
 let arrayTemporal = [];
 
 function login() {
@@ -30,7 +30,7 @@ function cargaDeDatos(correo, contrasena) {
         codificarUrl(idenUser, nombreUser, apellidosUser);
         // window.location.href = `/src/tareas.html?&id=${idenUser}&nombreUser=${nombreUser}&apellidosUser=${apellidosUser}`;
       }
-      alert('STOP');
+      // alert('STOP');
     }
   })
 

@@ -55,6 +55,7 @@ async function grabarDatosEnJson(usuario) {
         body: JSON.stringify(usuario),
       });
     } catch (error) {
+      console.log('error: ' + error);
     }
   }
   

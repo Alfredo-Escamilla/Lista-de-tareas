@@ -1,30 +1,30 @@
 {
   "tareas": [
     {
+      "id": 1,
+      "tarea": "Tarea",
+      "notas": "tarea",
+      "completada": true,
+      "eliminada": false
+    },
+    {
+      "id": 2,
+      "tarea": "Tarea 2",
+      "notas": "tarea 2",
+      "completada": false,
+      "eliminada": false
+    },
+    {
       "id": 3,
-      "tarea": "Cuatro",
-      "notas": "tres",
+      "tarea": "Tarea a borrar",
+      "notas": "Tarea",
       "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 4,
-      "tarea": "012345678901234567890123456789012345678901234567890123456789",
-      "notas": "0123456789012345678901234567890123456789",
-      "completada": false,
-      "eliminada": false
-    },
-    {
-      "id": 5,
-      "tarea": "Dejar de tomar vino tinto",
-      "notas": "aaa",
-      "completada": false,
-      "eliminada": false
+      "eliminada": true
     }
   ],
   "usuarios": [
     {
-      "idUser": 1,
+      "id": 1,
       "mail": "alfredo@alfredo.com",
       "pass": "alfredo",
       "nombreUser": "Alfredo",
@@ -42,6 +42,20 @@
       "nombreUser": "Marcela",
       "apellidosUser": "Niño",
       "mail": "marcela@marcela.com",
+      "pass": "alfredo"
+    },
+    {
+      "id": 4,
+      "nombreUser": "pepe",
+      "apellidosUser": "pepe",
+      "mail": "pepe@pepe.com",
+      "pass": "pepepe"
+    },
+    {
+      "id": 5,
+      "nombreUser": "pepe",
+      "apellidosUser": "pepe",
+      "mail": "alfredo@alfredo.es",
       "pass": "alfredo"
     }
   ]

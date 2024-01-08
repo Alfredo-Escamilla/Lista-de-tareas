@@ -16,6 +16,7 @@ function create(){
       }
     console.log(usuario);
     guardarDatos(usuario);
+    
 }
 
 function guardarDatos(usuario) {
@@ -27,6 +28,7 @@ function guardarDatos(usuario) {
       usuario.id = ++longitudArray;
       console.log('Siguiente Id: ' + usuario.id);
       grabarDatosEnJson(usuario);
+     
     })
   }
 
@@ -54,8 +56,12 @@ async function grabarDatosEnJson(usuario) {
         },
         body: JSON.stringify(usuario),
       });
+      retornoHome();
     } catch (error) {
       console.log('error: '+ error);
     }
   }
   
+  function retornoHome() {
+    window.location.href = `/index.html`;
+    }

@@ -12,7 +12,7 @@ const rutaJson = "/json/datos.json";
 
 var url = window.location.href;
 var searchParams = new URLSearchParams(url);
-var idenUserCodificado = searchParams.get('idUser');
+var idenUserCodificado = searchParams.get('id');
 var nombreUserCodificado = searchParams.get('nombreUser');
 var apellidosUserCodificado = searchParams.get('apellidosUser');
 const idenUser = decodeURIComponent(idenUserCodificado);
@@ -38,8 +38,8 @@ function creacionNuevaTarea(arrayTemporal) {
     let elementos = `
     <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
-        <td style="width: 85.1%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 13.9%; background-color: #63f1e1;">
+        <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
+        <td style="width: 12%; background-color: #63f1e1;">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
           <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
@@ -52,8 +52,8 @@ function creacionNuevaTarea(arrayTemporal) {
     let elementos = `
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
-    	<td style="width: 85.1%;">${nombreTarea}</td>
-    	<td style="width: 13.9%;">
+    	<td style="width: 77.56%;">${nombreTarea}</td>
+    	<td style="width: 12%;">
     		<button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-flag-checkered"></i></button> 
     		<button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
     		<button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
@@ -309,7 +309,7 @@ const ventana = `
 <div id="objetoTarea" class="toast show border-danger"
     style=" margin-top: 2%; margin-left: auto; margin-right: auto; width: 400px; height: 70vh; overflow-y: scroll;">
     <div class="card mt-2 p-1 border-warning" style="margin-left: 1.3em; margin-right: 1.3em;">
-        <div style="text-align: center;">Bienvenido ${nombreUser}. Tu lista de tareas:</div>
+        <div style="text-align: center;">Tienes estas tareas pendientes, ${nombreUser}</div>
     </div>
 </div>
 
@@ -322,7 +322,7 @@ const ventana = `
                 <i class="fa-solid fa-filter"></i>
             </button>
             <ul class="dropdown-menu" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Selecciona el filtro">
-              <li><a class="dropdown-item" onclick="mostrarTodo()">Todas</a></li>
+              <li><a class="dropdown-item" onclick="mostrarTodo()">Quitar filtros</a></li>
               <li><a class="dropdown-item" onclick="filtroCompletadas()">Completadas</a></li>
               <li><a class="dropdown-item" onclick="filtroEliminadas()">Eliminadas</a></li>
             </ul>
@@ -364,8 +364,8 @@ function mostrarTareasCompletadas(arrayTemporal) {
     let elementos = `
     <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
-        <td style="width: 86.1%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 13.9%; background-color: #63f1e1;">
+        <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
+        <td style="width: 12%; background-color: #63f1e1;">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
           <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
@@ -400,10 +400,11 @@ function mostrarTareasEliminadas(arrayTemporal) {
     let elementos = `
     <table class="card mb-2 mt-2 mr-2 border-danger" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
-        <td style="color:white; width: 91.25%; background-color: rgb(219, 83, 70);">${nombreTarea}</td>
-        <td style="text-align: center; width: 8.75%; background-color: rgb(219, 83, 70);">
+        <td style="color:white; width: 77.56%; background-color: rgb(219, 83, 70);">${nombreTarea}</td>
+        <td style="text-align: center; width: 12%; background-color: rgb(219, 83, 70);">
         <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-trash-can-arrow-up" style="color: #ffffff;"></i>  </button>
         <button class="delete" onclick="borrarTareaDef(${arrayTemporal.id})"><i class="fa-solid fa-fire" style="color: #ffffff;"></i></button>
+        <icon class="delete"><i class="fa-solid fa-trash-can-arrow-up" style="color: rgb(219, 83, 70);"></i></icon>
         </td>
       </tr>
     </table>`;

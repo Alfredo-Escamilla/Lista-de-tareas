@@ -16,7 +16,7 @@ function cargaDeDatos(correo, contrasena) {
   console.log('carga de datos función');
   leerJson().then(() => {
     for (let i = 0; i < arrayTemporal.length; i++) {
-      let idenUser = arrayTemporal[i].idUser;
+      let idenUser = arrayTemporal[i].id;
       let email = arrayTemporal[i].mail;
       let pass = arrayTemporal[i].pass;
       let nombreUser = arrayTemporal[i].nombreUser;
@@ -28,7 +28,7 @@ function cargaDeDatos(correo, contrasena) {
       console.log('Apellido usuario: ' + apellidosUser);
       if (correo === email && contrasena === pass) {
         codificarUrl(idenUser, nombreUser, apellidosUser);
-        // window.location.href = `/src/tareas.html?&idUser=${idenUser}&nombreUser=${nombreUser}&apellidosUser=${apellidosUser}`;
+        // window.location.href = `/src/tareas.html?&id=${idenUser}&nombreUser=${nombreUser}&apellidosUser=${apellidosUser}`;
       }
       alert('STOP');
     }
@@ -41,7 +41,7 @@ function codificarUrl(idenUser, nombreUser, apellidosUser) {
   const nombreUserCodificado = encodeURIComponent(nombreUser);
   const apellidosUserCodificado = encodeURIComponent(apellidosUser);
   console.log(idenUserCodificado + ' ' + nombreUserCodificado + ' ' + apellidosUserCodificado);
-  const url = `/src/tareas.html?&idUser=${idenUserCodificado}&nombreUser=${nombreUserCodificado}&apellidosUser=${apellidosUserCodificado}`;
+  const url = `/src/tareas.html?&id=${idenUserCodificado}&nombreUser=${nombreUserCodificado}&apellidosUser=${apellidosUserCodificado}`;
   window.location.href = url;
   console.log(window.location.href);
 }
@@ -81,7 +81,7 @@ async function leerJson() {
 function inicio() {
   leerInicio().then(() => {
     for (let i = 0; i < arrayTemporal.length; i++) {
-      let idUser = arrayTemporal[i].idUser;
+      let id = arrayTemporal[i].id;
     }
   })
 }

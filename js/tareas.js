@@ -28,7 +28,7 @@ function retornarIndex() {
 
 
 function creacionNuevaTarea(arrayTemporal) {
-  let nombreTarea = arrayTemporal.tarea.slice(0, 24).padEnd(24, " ");
+  let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
   if (arrayTemporal.eliminada === true) {
     return;
@@ -357,7 +357,7 @@ function cargaDeDatosCompletadas() {
 }
 
 function mostrarTareasCompletadas(arrayTemporal) {
-  let nombreTarea = arrayTemporal.tarea.slice(0, 24).padEnd(24, " ");
+  let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
 
   if (arrayTemporal.completada === true) {
@@ -393,7 +393,7 @@ function cargaDeDatosEliminadas() {
 }
 
 function mostrarTareasEliminadas(arrayTemporal) {
-  let nombreTarea = arrayTemporal.tarea.slice(0, 24).padEnd(24, " ");
+  let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
 
   if (arrayTemporal.eliminada === true) {

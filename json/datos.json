@@ -19,7 +19,7 @@
       "tarea": "Dejar de tomar vino tinto",
       "notas": "aaa",
       "completada": false,
-      "eliminada": true
+      "eliminada": false
     }
   ],
   "usuarios": [
@@ -29,6 +29,27 @@
       "pass": "alfredo",
       "nombreUser": "Alfredo",
       "apellidosUser": "Escamilla"
+    },
+    {
+      "idUser": 2,
+      "mail": "juan@juan.com",
+      "pass": "juan",
+      "nombreUser": "Juan",
+      "apellidosUser": "García"
+    },
+    {
+      "idUser": 3,
+      "mail": "maria@maria.com",
+      "pass": "maria",
+      "nombreUser": "María",
+      "apellidosUser": "Pérez"
+    },
+    {
+      "idUser": 4,
+      "mail": "jacinta@jacinta.com",
+      "pass": "jacinta",
+      "nombreUser": "Jacinta",
+      "apellidosUser": "Martínez"
     }
   ]
 }

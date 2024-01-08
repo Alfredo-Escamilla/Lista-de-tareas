@@ -8,7 +8,7 @@ function create(){
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const usuario = {
-        idUser: 1000,
+        id: 1000,
         nombreUser: nombre,
         apellidosUser: apellidos,
         mail: email,
@@ -24,8 +24,8 @@ function guardarDatos(usuario) {
       longitudArray = array.length;
       console.log('Longitud Array: ' + longitudArray);
       console.log('Usuario: ' + usuario.nombreUser);
-      usuario.idUser = ++longitudArray;
-      console.log('Siguiente IdUser: ' + usuario.idUser);
+      usuario.id = ++longitudArray;
+      console.log('Siguiente Id: ' + usuario.id);
       grabarDatosEnJson(usuario);
     })
   }
@@ -55,7 +55,7 @@ async function grabarDatosEnJson(usuario) {
         body: JSON.stringify(usuario),
       });
     } catch (error) {
-      console.log('error: ' + error);
+      console.log('error: '+ error);
     }
   }
   

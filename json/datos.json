@@ -24,11 +24,18 @@
   ],
   "usuarios": [
     {
-      "idUser": 1,
+      "id": 1,
       "mail": "alfredo@alfredo.com",
       "pass": "alfredo",
       "nombreUser": "Alfredo",
       "apellidosUser": "Escamilla"
+    },
+    {
+      "id": 2,
+      "nombreUser": "Alfredo",
+      "apellidosUser": "Alfredo",
+      "mail": "alfredo@alfredo.com",
+      "pass": "alfredo"
     }
   ]
 }

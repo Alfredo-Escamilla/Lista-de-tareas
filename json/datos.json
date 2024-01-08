@@ -2,15 +2,22 @@
   "tareas": [
     {
       "id": 3,
-      "tarea": "Tres",
+      "tarea": "Cuatro",
       "notas": "tres",
-      "completada": true,
+      "completada": false,
       "eliminada": false
     },
     {
       "id": 4,
       "tarea": "012345678901234567890123456789012345678901234567890123456789",
       "notas": "0123456789012345678901234567890123456789",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 5,
+      "tarea": "Dejar de tomar vino tinto",
+      "notas": "aaa",
       "completada": false,
       "eliminada": true
     }

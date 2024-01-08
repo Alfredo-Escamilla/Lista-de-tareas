@@ -8,7 +8,7 @@ function create(){
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const usuario = {
-        idUser: 0,
+        idUser: 1000,
         nombreUser: nombre,
         apellidosUser: apellidos,
         mail: email,
@@ -45,7 +45,7 @@ function leerValoresUsuarios() {
   }
 
 async function grabarDatosEnJson(usuario) {
-    const rutaJsonDeVuelta = "http://localhost:3000/usuarios";
+    const rutaJsonDeVuelta = 'http://localhost:3000/usuarios';
     try {
       const responseVuelta = await fetch(rutaJsonDeVuelta, {
         method: 'POST',

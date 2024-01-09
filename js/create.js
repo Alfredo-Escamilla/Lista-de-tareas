@@ -15,8 +15,20 @@ function create(){
         pass: password
       }
     console.log(usuario);
+    comprobarCorreo(email);
     guardarDatos(usuario);
     
+}
+
+function comprobarCorreo(email) {
+  leerValoresUsuarios().then(() => {
+    for (let i = 0; i < array.length; i++) {
+      if (email === array[i].mail) {
+        alert('Este correo ya existe. Prueba con otro');
+        retornoCreate();
+      }
+    }
+  })
 }
 
 function guardarDatos(usuario) {
@@ -64,4 +76,8 @@ async function grabarDatosEnJson(usuario) {
   
   function retornoHome() {
     window.location.href = `/index.html`;
+    }
+
+    function retornoCreate() {
+      window.location.href = '/src/crearusuario.html';
     }

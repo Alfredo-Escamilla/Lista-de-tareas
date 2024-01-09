@@ -12,26 +12,19 @@ const rutaJson = "/json/datos.json";
 
 var url = window.location.href;
 var searchParams = new URLSearchParams(url);
-var idenUserCodificado = searchParams.get('id');
-var nombreUserCodificado = searchParams.get('nombreUser');
-var apellidosUserCodificado = searchParams.get('apellidosUser');
-const idenUser = decodeURIComponent(idenUserCodificado);
-const nombreUser = decodeURIComponent(nombreUserCodificado);
-const apellidosUser = decodeURIComponent(apellidosUserCodificado);
-console.log(idenUser);
-console.log(nombreUser);
-console.log(apellidosUser);
+var idenUser = searchParams.get('id');
+var nombreUser = searchParams.get('nombreUser');
 
 function retornarIndex() {
   window.location.href = `/index.html`;
 }
 
-
 function creacionNuevaTarea(arrayTemporal) {
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
-  if (arrayTemporal.eliminada === true) {
-    return;
+  if (arrayTemporal.usuario === idenUser) {
+    if (arrayTemporal.eliminada === true) {
+      return;
   }
 
   if (arrayTemporal.completada === true) {
@@ -39,10 +32,10 @@ function creacionNuevaTarea(arrayTemporal) {
     <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
         <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 12%; background-color: #63f1e1;">
+        <td style="width: 13%; background-color: #63f1e1;">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
-          <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
+          <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-box-archive"></i></button>
         </td>
       </tr>
     </table>`;
@@ -53,16 +46,32 @@ function creacionNuevaTarea(arrayTemporal) {
   <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
     <tr>
     	<td style="width: 77.56%;">${nombreTarea}</td>
-    	<td style="width: 12%;">
+    	<td style="width: 13%;">
     		<button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-flag-checkered"></i></button> 
     		<button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
-    		<button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
+    		<button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-box-archive"></i></button>
     	</td>
     </tr>
   </table>`;
     nuevaTarea.insertAdjacentHTML("beforeend", elementos);
   }
 }
+}
+function tareaCompletada(){
+  let elementos = `
+    <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+      <tr>
+        <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
+        <td style="width: 13%; background-color: #63f1e1;">
+          <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
+          <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
+          <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-box-archive"></i></button>
+        </td>
+      </tr>
+    </table>`;
+    nuevaTarea.insertAdjacentHTML("beforeend", elementos);
+}
+
 
 function ventanaModal(tarea) {
   const ventanaModal =
@@ -194,7 +203,8 @@ function guardarTareaEnArrayTemporal() {
     tarea: valorCajaTarea,
     notas: valorCajaNotas,
     completada: completada,
-    eliminada: eliminada
+    eliminada: eliminada, 
+    usuario: idenUser
   };
   arrayTemporal.push(tareaNueva);
 }
@@ -309,7 +319,7 @@ const ventana = `
 <div id="objetoTarea" class="toast show border-danger"
     style=" margin-top: 2%; margin-left: auto; margin-right: auto; width: 400px; height: 70vh; overflow-y: scroll;">
     <div class="card mt-2 p-1 border-warning" style="margin-left: 1.3em; margin-right: 1.3em;">
-        <div style="text-align: center;">Tus tareas pendientes, ${nombreUser}</div>
+        <div style="text-align: center;">Usuario: ${nombreUser}</div>
     </div>
 </div>
 
@@ -324,7 +334,7 @@ const ventana = `
             <ul class="dropdown-menu" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Selecciona el filtro">
               <li><a class="dropdown-item" onclick="mostrarTodo()">Quitar filtros</a></li>
               <li><a class="dropdown-item" onclick="filtroCompletadas()">Completadas</a></li>
-              <li><a class="dropdown-item" onclick="filtroEliminadas()">Eliminadas</a></li>
+              <li><a class="dropdown-item" onclick="filtroEliminadas()">Archivadas</a></li>
             </ul>
         </div>
     </div>` ;
@@ -359,22 +369,23 @@ function cargaDeDatosCompletadas() {
 function mostrarTareasCompletadas(arrayTemporal) {
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
-
-  if (arrayTemporal.completada === true) {
-    let elementos = `
-    <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
-      <tr>
+  if (arrayTemporal.usuario === idenUser) {
+    if (arrayTemporal.completada === true) {
+      let elementos = `
+      <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+        <tr>
         <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 12%; background-color: #63f1e1;">
+        <td style="width: 13%; background-color: #63f1e1;">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
-          <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa fa-trash-alt"></i></button>
+          <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-box-archive"></i></button>
         </td>
       </tr>
     </table>`;
     nuevaTarea.insertAdjacentHTML("beforeend", elementos);
 
   } 
+}
 }
 
 function filtroEliminadas() { 
@@ -395,20 +406,21 @@ function cargaDeDatosEliminadas() {
 function mostrarTareasEliminadas(arrayTemporal) {
   let nombreTarea = arrayTemporal.tarea.slice(0, 35).padEnd(35, " ");
   nuevaTarea = document.querySelector("#objetoTarea");
-
-  if (arrayTemporal.eliminada === true) {
-    let elementos = `
-    <table class="card mb-2 mt-2 mr-2 border-danger" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
-      <tr>
+  if (arrayTemporal.usuario === idenUser) {
+    if (arrayTemporal.eliminada === true) {
+      let elementos = `
+      <table class="card mb-2 mt-2 mr-2 border-danger" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+        <tr>
         <td style="color:white; width: 77.56%; background-color: rgb(219, 83, 70);">${nombreTarea}</td>
-        <td style="text-align: center; width: 12%; background-color: rgb(219, 83, 70);">
-        <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-trash-can-arrow-up" style="color: #ffffff;"></i>  </button>
-        <button class="delete" onclick="borrarTareaDef(${arrayTemporal.id})"><i class="fa-solid fa-fire" style="color: #ffffff;"></i></button>
+        <td style="text-align: center; width: 13%; background-color: rgb(219, 83, 70);">
+        <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-boxes-packing" style="color: #ffffff;"></i>  </button>
         <icon class="delete"><i class="fa-solid fa-trash-can-arrow-up" style="color: rgb(219, 83, 70);"></i></icon>
+        <button class="delete" onclick="borrarTareaDef(${arrayTemporal.id})"><i class="fa-solid fa-fire" style="color: #ffffff;"></i></button>
         </td>
       </tr>
     </table>`;
     nuevaTarea.insertAdjacentHTML("beforeend", elementos);
 
   } 
+}
 }

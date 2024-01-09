@@ -17,28 +17,24 @@ function recovery() {
 
 function comprobarCorreo(email, password) {
     leerValoresUsuarios().then(() => {
-        let correoExistente = true;
-        console.log('array: ');
-        console.log(array);
         for (let i = 0; i < array.length; i++) {
             if (email === array[i].mail) {
-                correoExistente = false;
+                console.log('Array dentro del IF');
                 console.log(array);
-                array[i].mail === email;
-                array[i].pass === password;
-                console.log('Datos nuevos:');
-                console.log(array[i].mail + ' ' + array[i].pass);
-                console.log('Id: ');
-                console.log(array[i].id);
+                console.log('email: ' + email);
+                console.log('password: ' + password)
+                array[i].mail = email;
+                array[i].pass = password;
                 let id = array[i].id;
+                console.log('Datos después de modificar los datos del objeto');
+                console.log('array[i].mail: ');
+                console.log(array[i].mail);
+                console.log('array[i].password: ');
+                console.log(array[i].password);
+                console.log('Valor de id: ' + id);
                 guardarDatosEnJson(array, id);
                 break; // No es necesario seguir buscando una vez encontrado el correo
             }
-        }
-
-        if (correoExistente) {
-            alert('Este correo no exite es nuestro sistema.');
-            retornoRecovery();
         }
     });
 }
@@ -56,26 +52,22 @@ function leerValoresUsuarios() {
     })
 }
 
-function retornoRecovery() {
-    window.location.href = '/src/recuperarpass.html';
-}
-
 async function guardarDatosEnJson(array, id) {
-    console.log('array:');
+    console.log('Gaurdar Json valor de array:');
     console.log(array);
     console.log('ID:');
     console.log(id);
     console.log('Array[id]');
-    console.log(array[--id]);
     alert('stop in the name of love')
-    const rutaJsonDeVuelta = `http://localhost:3000/usuarios/${++id}`;
+    const rutaJsonDeVuelta = `http://localhost:3000/usuarios/${id}`;
+    id--;
     try {
       const responseVuelta = await fetch(rutaJsonDeVuelta, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(array[--id]),
+        body: JSON.stringify(array),
       });
       window.alert('Contraseña regenerada. Inicia sesión.')
       retornoHome();
@@ -83,3 +75,8 @@ async function guardarDatosEnJson(array, id) {
       console.log('error: '+ error);
     }
   }
+
+
+  function retornoRecovery() {
+    window.location.href = '/src/recuperarpass.html';
+}

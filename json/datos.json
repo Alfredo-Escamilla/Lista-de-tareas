@@ -71,6 +71,13 @@
       "apellidosUser": "Escamilla",
       "mail": "daniel@daniel.com",
       "pass": "daniel"
+    },
+    {
+      "id": 3,
+      "nombreUser": "",
+      "apellidosUser": "",
+      "mail": "alfredo@alfredo.com",
+      "pass": "874025"
     }
   ]
 }

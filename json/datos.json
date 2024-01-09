@@ -2,193 +2,75 @@
   "tareas": [
     {
       "id": 1,
-      "tarea": "aaa",
-      "notas": "aaa",
+      "tarea": "Tarea 1",
+      "notas": "1",
       "completada": true,
       "eliminada": false,
-      "usuario": "6"
+      "usuario": "1"
     },
     {
       "id": 2,
-      "tarea": "cccc",
+      "tarea": "Tareas 2",
       "notas": "",
       "completada": false,
       "eliminada": false,
-      "usuario": "6"
+      "usuario": "1"
     },
     {
       "id": 3,
-      "tarea": "tarea",
-      "notas": "55",
-      "completada": true,
+      "tarea": "Tarea 3",
+      "notas": "",
+      "completada": false,
       "eliminada": false,
-      "usuario": "6"
+      "usuario": "1"
     },
     {
       "id": 4,
-      "tarea": "aaa",
-      "notas": "aaaa",
+      "tarea": "Tarea de Daniel",
+      "notas": "",
       "completada": false,
       "eliminada": false,
-      "usuario": "6"
+      "usuario": "2"
     },
     {
       "id": 5,
-      "tarea": "aaaa",
-      "notas": "aaaa",
-      "completada": true,
+      "tarea": "Tarea DAniel 2",
+      "notas": "",
+      "completada": false,
       "eliminada": false,
-      "usuario": "6"
+      "usuario": "2"
     },
     {
       "id": 6,
-      "tarea": "ssss",
-      "notas": "aaaa",
+      "tarea": "Tarea mia",
+      "notas": "",
       "completada": false,
       "eliminada": true,
-      "usuario": "6"
+      "usuario": "1"
     },
     {
       "id": 7,
-      "tarea": "dddd",
-      "notas": "aaaa",
-      "completada": false,
-      "eliminada": false,
-      "usuario": "6"
-    },
-    {
-      "id": 8,
-      "tarea": "3333",
-      "notas": "3333",
-      "completada": false,
-      "eliminada": true,
-      "usuario": "6"
-    },
-    {
-      "id": 9,
-      "tarea": "Tarea de pepe",
-      "notas": "pepe",
-      "completada": false,
-      "eliminada": false,
-      "usuario": "4"
-    },
-    {
-      "id": 10,
-      "tarea": "Otra tarea de pepe",
+      "tarea": "Daniel otra",
       "notas": "",
       "completada": false,
       "eliminada": false,
-      "usuario": "4"
-    },
-    {
-      "id": 11,
-      "tarea": "Tarea de Miguel",
-      "notas": "Miguel",
-      "completada": true,
-      "eliminada": false,
-      "usuario": "7"
-    },
-    {
-      "id": 12,
-      "tarea": "Tarea 2 Miguel",
-      "notas": "",
-      "completada": false,
-      "eliminada": true,
-      "usuario": "7"
-    },
-    {
-      "id": 13,
-      "tarea": "tarea 3 Miguel",
-      "notas": "",
-      "completada": false,
-      "eliminada": false,
-      "usuario": "7"
+      "usuario": "2"
     }
   ],
   "usuarios": [
     {
       "id": 1,
-      "mail": "alfredo@alfredo.net",
-      "pass": "alfredo",
-      "nombreUser": "Alfredito",
-      "apellidosUser": "Escamilla"
+      "nombreUser": "Alfredo",
+      "apellidosUser": "Escamilla González",
+      "mail": "alfredo@alfredo.com",
+      "pass": "alfredo"
     },
     {
       "id": 2,
-      "nombreUser": "Alfredo",
-      "apellidosUser": "Alfredo",
-      "mail": "alfredo@alfredo.com",
-      "pass": "alfredo"
-    },
-    {
-      "id": 3,
-      "nombreUser": "Marcela",
-      "apellidosUser": "Niño",
-      "mail": "marcela@marcela.com",
-      "pass": "alfredo"
-    },
-    {
-      "id": 4,
-      "nombreUser": "pepe",
-      "apellidosUser": "pepe",
-      "mail": "pepe@pepe.com",
-      "pass": "pepepe"
-    },
-    {
-      "id": 5,
-      "nombreUser": "pepe",
-      "apellidosUser": "pepe",
-      "mail": "alfredo@alfredo.es",
-      "pass": "alfredo"
-    },
-    {
-      "id": 6,
-      "nombreUser": "informática",
-      "apellidosUser": "Gigabyte",
-      "mail": "alfredo@alfredo.com",
-      "pass": "alfredo"
-    },
-    {
-      "id": 7,
-      "nombreUser": "Miguel",
-      "apellidosUser": "Lobato",
-      "mail": "miguel@lobato.com",
-      "pass": "lobato"
-    },
-    {
-      "id": 8,
-      "nombreUser": "pepe",
-      "apellidosUser": "escamilla gonzalez",
-      "mail": "alfredo@alfredo.com",
-      "pass": "alfredo"
-    },
-    {
-      "id": 9,
-      "nombreUser": "pepe",
-      "apellidosUser": "escamilla gonzalez",
-      "mail": "alfredo@alfredo.com",
-      "pass": "alfredo"
-    },
-    {
-      "id": 10,
-      "nombreUser": "alfredo",
-      "apellidosUser": "escamilla gonzalez",
-      "mail": "alfredo@alfredo.com",
-      "pass": "alfredo"
-    },
-    {
-      "id": 11,
-      "nombreUser": "alfredo",
-      "apellidosUser": "escamilla gonzalez",
-      "mail": "alfredo@alfredo.com",
-      "pass": "alfredo"
-    },
-    {
-      "id": 12,
-      "nombreUser": "técnico informátiva",
-      "apellidosUser": "adfasfasdfsfd ",
-      "mail": "alfredo@alfredo.com",
-      "pass": "alfredo"
+      "nombreUser": "Daniel",
+      "apellidosUser": "Escamilla",
+      "mail": "daniel@daniel.com",
+      "pass": "daniel"
     }
   ]
 }

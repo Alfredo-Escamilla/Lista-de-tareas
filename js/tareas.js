@@ -31,8 +31,8 @@ function creacionNuevaTarea(arrayTemporal) {
     let elementos = `
     <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
-        <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 13%; background-color: #63f1e1;">
+        <td style="width: 77.56%; background-color: rgb(154, 254, 87);">${nombreTarea}</td>
+        <td style="width: 13%; background-color: rgb(154, 254, 87);">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
           <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-box-archive"></i></button>
@@ -61,8 +61,8 @@ function tareaCompletada(){
   let elementos = `
     <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
       <tr>
-        <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 13%; background-color: #63f1e1;">
+        <td style="width: 77.56%; background-color: rgb(154, 254, 87);">${nombreTarea}</td>
+        <td style="width: 13%; background-color: rgb(154, 254, 87);">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
           <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-box-archive"></i></button>
@@ -316,7 +316,7 @@ const ventana = `
     </div>
 </div>
 
-<div id="objetoTarea" class="toast show border-danger"
+<div id="objetoTarea" class="toast show border-success border-2"
     style=" margin-top: 2%; margin-left: auto; margin-right: auto; width: 400px; height: 70vh; overflow-y: scroll;">
     <div class="card mt-2 p-1 border-warning" style="margin-left: 1.3em; margin-right: 1.3em;">
         <div style="text-align: center;">Usuario: ${nombreUser}</div>
@@ -374,8 +374,8 @@ function mostrarTareasCompletadas(arrayTemporal) {
       let elementos = `
       <table class="card mb-2 mt-2 mr-2 border-info" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
         <tr>
-        <td style="width: 77.56%; background-color: #63f1e1;">${nombreTarea}</td>
-        <td style="width: 13%; background-color: #63f1e1;">
+        <td style="width: 77.56%; background-color: rgb(154, 254, 87);">${nombreTarea}</td>
+        <td style="width: 13%; background-color: rgb(154, 254, 87);">
           <button class="finish" onclick="completarTarea(${arrayTemporal.id})"><i class="fa-solid fa-check-double"></i></button> 
           <button class="edit" onclick="editarTarea(${arrayTemporal.id})"><i class="fa-solid fa-pen-to-square"></i></button>
           <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-box-archive"></i></button>
@@ -409,7 +409,7 @@ function mostrarTareasEliminadas(arrayTemporal) {
   if (arrayTemporal.usuario === idenUser) {
     if (arrayTemporal.eliminada === true) {
       let elementos = `
-      <table class="card mb-2 mt-2 mr-2 border-danger" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
+      <table class="card mb-2 mt-2 mr-2 border-success border-2" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
         <tr>
         <td style="color:white; width: 77.56%; background-color: rgb(219, 83, 70);">${nombreTarea}</td>
         <td style="text-align: center; width: 13%; background-color: rgb(219, 83, 70);">

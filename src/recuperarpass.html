@@ -29,10 +29,18 @@
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
       
-                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Recuperar contraseña</p>
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Restaurar contraseña</p>
       
                       <form class="mx-1 mx-md-4">
       
+                        <div class="d-flex flex-row align-items-center mb-4">
+                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                          <div class="form-outline flex-fill mb-0">
+                            <input type="email" id="email" class="form-control" />
+                            <label class="form-label" for="email">Tu Email</label>
+                          </div>
+                        </div>
+
                         <div class="d-flex flex-row align-items-center mb-4">
                           <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div class="form-outline flex-fill mb-0">
@@ -41,22 +49,14 @@
                           </div>
                         </div>
       
-                        <div class="d-flex flex-row align-items-center mb-4">
-                          <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                          <div class="form-outline flex-fill mb-0">
-                            <input type="email" id="mail" class="form-control" />
-                            <label class="form-label" for="mail">Tu Email</label>
-                          </div>
-                        </div>
-      
                         <div class="form-check d-flex justify-content-center mb-5">
                           <label class="form-check-label" for="form2Example3">
-                           Si el correo existe en nuestra base de datos, la contraseña será cambiada.
+                           Si el correo existe en nuestra base de datos, la contraseña será restaurada.
                           </label>
                         </div>
       
                         <div class="d-flex justify-content-around mx-4 mb-3 mb-lg-4">
-                          <button type="button" class="btn btn-primary btn-lg">Enviar correo</button>
+                          <button type="button" class="btn btn-info btn-lg" onclick="recovery()">Restaurar</button>
                           <button type="button" class="btn btn-danger btn-lg" onclick="retornoHome()"><i class="fa-solid fa-house-user"></i></button>
                         </div>
       

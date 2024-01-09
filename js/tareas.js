@@ -309,7 +309,7 @@ const ventana = `
 <div id="objetoTarea" class="toast show border-danger"
     style=" margin-top: 2%; margin-left: auto; margin-right: auto; width: 400px; height: 70vh; overflow-y: scroll;">
     <div class="card mt-2 p-1 border-warning" style="margin-left: 1.3em; margin-right: 1.3em;">
-        <div style="text-align: center;">Tienes estas tareas pendientes, ${nombreUser}</div>
+        <div style="text-align: center;">Tus tareas pendientes, ${nombreUser}</div>
     </div>
 </div>
 

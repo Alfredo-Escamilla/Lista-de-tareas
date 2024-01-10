@@ -25,6 +25,8 @@ function comprobarCorreo(email, password) {
                 console.log('password: ' + password)
                 array[i].mail = email;
                 array[i].pass = password;
+                let nombre = array[i].nombreUser;
+                let apellido = array[i].apellidosUser
                 let id = array[i].id;
                 console.log('Datos después de modificar los datos del objeto');
                 console.log('array[i].mail: ');
@@ -32,7 +34,7 @@ function comprobarCorreo(email, password) {
                 console.log('array[i].password: ');
                 console.log(array[i].password);
                 console.log('Valor de id: ' + id);
-                guardarDatosEnJson(array, id);
+                actualizarJson(id, email, password,nombre, apellido);
                 break; // No es necesario seguir buscando una vez encontrado el correo
             }
         }
@@ -52,27 +54,26 @@ function leerValoresUsuarios() {
     })
 }
 
-async function guardarDatosEnJson(array, id) {
-    console.log('Gaurdar Json valor de array:');
-    console.log(array);
-    console.log('ID:');
-    console.log(id);
-    console.log('Array[id]');
-    alert('stop in the name of love')
-    const rutaJsonDeVuelta = `http://localhost:3000/usuarios/${id}`;
-    id--;
+
+  async function actualizarJson(id, email, password,nombre, apellido) {
+    const apiUrl = `http://127.0.0.1:3000/usuarios/${id}`;
+    const usuario = {
+        id: id,
+        nombreUser: nombre,
+        apellidosUser: apellido,
+        mail: email,
+        pass: password
+    }
     try {
-      const responseVuelta = await fetch(rutaJsonDeVuelta, {
-        method: 'POST',
+      const responseVuelta = await fetch(apiUrl, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(array),
+        body: JSON.stringify(usuario),
       });
-      window.alert('Contraseña regenerada. Inicia sesión.')
-      retornoHome();
     } catch (error) {
-      console.log('error: '+ error);
+      alert('Error: ' + console.log(error));
     }
   }
 

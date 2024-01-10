@@ -1,5 +1,15 @@
 {
   "dependencies": {
     "yest": "^0.0.1"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "lista-de-tareas",
+  "description": "-",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }

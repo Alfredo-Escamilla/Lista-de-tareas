@@ -4,8 +4,8 @@
       "id": 1,
       "tarea": "Tarea 1",
       "notas": "1",
-      "completada": true,
-      "eliminada": false,
+      "completada": false,
+      "eliminada": true,
       "usuario": "1"
     },
     {
@@ -20,7 +20,7 @@
       "id": 3,
       "tarea": "Tarea 3",
       "notas": "",
-      "completada": false,
+      "completada": true,
       "eliminada": false,
       "usuario": "1"
     },
@@ -55,6 +55,20 @@
       "completada": false,
       "eliminada": false,
       "usuario": "2"
+    },
+    {
+      "id": 9,
+      "tarea": "Tarea 233",
+      "notas": "tarea 2",
+      "completada": false,
+      "eliminada": false
+    },
+    {
+      "id": 10,
+      "tarea": "Tarea 45",
+      "notas": "",
+      "completada": false,
+      "eliminada": false
     }
   ],
   "usuarios": [
@@ -63,14 +77,21 @@
       "nombreUser": "Alfredo",
       "apellidosUser": "Escamilla González",
       "mail": "alfredo@alfredo.com",
-      "pass": "888888888888"
+      "pass": "pppppp"
     },
     {
       "id": 2,
       "nombreUser": "Daniel",
       "apellidosUser": "Escamilla",
       "mail": "daniel@daniel.com",
-      "pass": "daniel"
+      "pass": "444444"
+    },
+    {
+      "id": 3,
+      "nombreUser": "Pedro",
+      "apellidosUser": "Perez",
+      "mail": "pedro@pedro.com",
+      "pass": "pedro"
     }
   ]
 }

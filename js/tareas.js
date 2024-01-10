@@ -412,7 +412,7 @@ function mostrarTareasEliminadas(arrayTemporal) {
       <table class="card mb-2 mt-2 mr-2 border-success border-2" style="margin-left: 1.3em; margin-right: 1.3em; width: 91%;">
         <tr>
         <td style="color:white; width: 77.56%; background-color: rgb(219, 83, 70);">${nombreTarea}</td>
-        <td style="text-align: center; width: 13%; background-color: rgb(219, 83, 70);">
+        <td style="text-align: center; width: 14%; background-color: rgb(219, 83, 70);">
         <button class="delete" onclick="borrarTarea(${arrayTemporal.id})"><i class="fa-solid fa-boxes-packing" style="color: #ffffff;"></i>  </button>
         <icon class="delete"><i class="fa-solid fa-trash-can-arrow-up" style="color: rgb(219, 83, 70);"></i></icon>
         <button class="delete" onclick="borrarTareaDef(${arrayTemporal.id})"><i class="fa-solid fa-fire" style="color: #ffffff;"></i></button>
